@@ -1,0 +1,70 @@
+name: Deploy to IRIS Live Environment
+
+on:
+  push:
+    branches:
+      - live
+
+jobs:
+  deploy:
+    name: Deploy to InterSystems IRIS Live servers
+    strategy:
+      matrix:
+        include:
+          - servertag: mirrorA
+            runner: [self-hosted, live, mirrorA]
+          - servertag: mirrorB
+            runner: [self-hosted, live, mirrorB]
+    runs-on: ${{ matrix.runner }}
+    environment: live
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+
+      - name: Create Terminal Script (LINUX)
+        shell: bash
+        run: |
+          cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
+          ${IRIS_USER}
+          ${IRIS_PASSWORD}
+          if \$SYSTEM.Mirror.IsPrimary() do ##class(SourceControl.Git.API).Pull(1)
+          halt
+          EOF
+          echo "Terminal script created successfully"
+      
+      - name: Deploy to IRIS Live Server (LINUX)
+        shell: bash
+        run: |
+          iristermPath="/usr/irissys/bin/irisdb"
+          scriptPath="${GITHUB_WORKSPACE}/deploy.scr"
+          irisMgrPath="/usr/irissys/mgr"
+          
+          echo "Executing IRIS deployment..."
+          echo "IRIS Path: ${iristermPath}"
+          echo "Script: ${scriptPath}"
+          
+          "${iristermPath}" -s "${irisMgrPath}" -U CTI \
+              < "${scriptPath}" \
+              > "${GITHUB_WORKSPACE}/deployment.log"
+          
+          rc=$?
+          
+          if [ $rc -ne 0 ]; then
+              echo "IRIS deployment failed with exit code $rc" >&2
+              exit $rc
+          fi     
+      
+      - name: Display Deployment Log (LINUX)
+        if: always()
+        shell: powershell
+        run: |
+          logPath="${GITHUB_WORKSPACE}/deployment.log"
+          if [ -f "$logPath" ]; then
+              echo
+              echo "=== Deployment Log ==="
+              cat "$logPath"
+          else
+              echo "No deployment log found"
+          fi        
