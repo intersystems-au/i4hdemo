@@ -11,8 +11,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - servertag: development 
-            runner: [self-hosted, linux, x64, development]
+          - servertag: dev 
+            runner: [self-hosted, linux, x64, dev]
     runs-on: ${{ matrix.runner }}
     environment: deveopment
     
