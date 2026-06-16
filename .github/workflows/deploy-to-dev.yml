@@ -32,6 +32,11 @@ jobs:
           EOF
           echo "Terminal script created successfully"
       
+      - name: Make script executable (LINUX)
+        shell: bash
+        run: |
+          chmod +x "${GITHUB_WORKSPACE}/deploy.scr"
+          
       - name: Deploy to IRIS Dev Server (LINUX)
         shell: bash
         run: |
