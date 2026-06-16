@@ -56,7 +56,7 @@ jobs:
       
       - name: Display Deployment Log (LINUX)
         if: always()
-        shell: powershell
+        shell: bash
         run: |
           logPath="${GITHUB_WORKSPACE}/deployment.log"
           if [ -f "$logPath" ]; then
