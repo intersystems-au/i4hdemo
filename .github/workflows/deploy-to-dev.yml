@@ -32,18 +32,23 @@ jobs:
           EOF
           echo "Terminal script created successfully"
       
+      - name: Make script executable (LINUX)
+        shell: bash
+        run: |
+          chmod +x "${GITHUB_WORKSPACE}/deploy.scr"
+          
       - name: Deploy to IRIS Dev Server (LINUX)
         shell: bash
         run: |
-          iristermPath="/usr/irissys/bin/irisdb"
+          iristermPath="/usr/irissys/bin/iris"
           scriptPath="${GITHUB_WORKSPACE}/deploy.scr"
-          irisMgrPath="/usr/irissys/mgr"
+          irisInstance="IRISHEALTH"
           
           echo "Executing IRIS deployment..."
           echo "IRIS Path: ${iristermPath}"
           echo "Script: ${scriptPath}"
           
-          "${iristermPath}" -s "${irisMgrPath}" -U CTI \
+          "${iristermPath}" session ${irisInstance} -U IRISAPP \
               < "${scriptPath}" \
               > "${GITHUB_WORKSPACE}/deployment.log"
           
