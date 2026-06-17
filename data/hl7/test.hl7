@@ -1,7 +1,4 @@
 <?xml version="1.0"?>
-
 <Category name="test" base="HealthShare_2.5">
-
 <MessageStructure name='ABS' definition='2.5.1:ABS'/>
-
 </Category>
