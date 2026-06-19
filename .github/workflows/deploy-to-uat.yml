@@ -22,7 +22,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-
       - name: Create Terminal Script (LINUX)
         shell: bash
         run: |
@@ -37,15 +36,15 @@ jobs:
       - name: Deploy to IRIS UAT Server (LINUX)
         shell: bash
         run: |
-          iristermPath="/usr/irissys/bin/irisdb"
+          iristermPath="/usr/irissys/bin/iris"
           scriptPath="${GITHUB_WORKSPACE}/deploy.scr"
-          irisMgrPath="/usr/irissys/mgr"
+          irisInstance="IRISHEALTH"
           
           echo "Executing IRIS deployment..."
           echo "IRIS Path: ${iristermPath}"
           echo "Script: ${scriptPath}"
           
-          "${iristermPath}" -s "${irisMgrPath}" -U CTI \
+          "${iristermPath}" session ${irisInstance} -U IRISAPP \
               < "${scriptPath}" \
               > "${GITHUB_WORKSPACE}/deployment.log"
           
@@ -54,8 +53,8 @@ jobs:
           if [ $rc -ne 0 ]; then
               echo "IRIS deployment failed with exit code $rc" >&2
               exit $rc
-          fi     
-      
+          fi   
+                
       - name: Display Deployment Log (LINUX)
         if: always()
         shell: powershell
