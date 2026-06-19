@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<defaultSettings>
+<item production="AlertNotificationManager" item="*" class="Ens.Activity.Operation.Local" setting="AcceptClassnames" value="1"><Deployable>true</Deployable></item>
+</defaultSettings>
