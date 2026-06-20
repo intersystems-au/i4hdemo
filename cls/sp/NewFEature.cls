@@ -1,6 +1,6 @@
 Class sp.NewFEature Extends Ens.Production
 {
-// feature comment
+// feature comment 2
 XData ProductionDefinition
 {
 <Production Name="sp.NewFEature" LogGeneralTraceEvents="false">
