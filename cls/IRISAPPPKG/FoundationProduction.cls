@@ -3,7 +3,7 @@ Class IRISAPPPKG.FoundationProduction Extends Ens.Production [ Not ProcedureBloc
 
 XData ProductionDefinition
 {
-<Production Name="IRISAPPPKG.FoundationProduction" TestingEnabled="false" LogGeneralTraceEvents="true">
+<Production Name="IRISAPPPKG.FoundationProduction" TestingEnabled="true" LogGeneralTraceEvents="true">
   <Description></Description>
   <ActorPoolSize>1</ActorPoolSize>
 </Production>
