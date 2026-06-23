@@ -12,9 +12,9 @@ jobs:
       matrix:
         include:
           - servertag: mirrorA
-            runner: [self-hosted, live, mirrorA]
+            runner: [self-hosted, live, A_Node]
           - servertag: mirrorB
-            runner: [self-hosted, live, mirrorB]
+            runner: [self-hosted, live, B_Node]
     runs-on: ${{ matrix.runner }}
     environment: live
     
