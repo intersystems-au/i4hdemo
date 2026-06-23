@@ -32,7 +32,7 @@ jobs:
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
           ${IRIS_PASSWORD}
-          if \$SYSTEM.Mirror.IsPrimary() do ##class(SourceControl.Git.API).Pull(1)
+          if ##class(%SYSTEM.Mirror).IsPrimary() do ##class(SourceControl.Git.API).Pull(1)
           halt
           EOF
           echo "Terminal script created successfully"
