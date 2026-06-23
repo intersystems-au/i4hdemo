@@ -27,7 +27,6 @@ jobs:
           IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
 
         run: |
-          sudo su - irisusr
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
           ${IRIS_PASSWORD}
@@ -39,7 +38,6 @@ jobs:
       - name: Deploy to IRIS Dev Server (LINUX)
         shell: bash
         run: |
-          sudo su - irisusr
           iristermPath="/usr/irissys/bin/iris"
           scriptPath="${GITHUB_WORKSPACE}/deploy.scr"
           irisInstance="IRISHEALTH"
