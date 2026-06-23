@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        env:
+          IRIS_USER: ${{ secrets.IRIS_USER }}
+          IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
 
       - name: Create Terminal Script (LINUX)
         shell: bash
