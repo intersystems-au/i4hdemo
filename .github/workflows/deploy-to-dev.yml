@@ -27,6 +27,7 @@ jobs:
           IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
 
         run: |
+          sudo su - irisusr
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
           ${IRIS_PASSWORD}
