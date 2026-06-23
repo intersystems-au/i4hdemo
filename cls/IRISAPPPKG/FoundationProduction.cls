@@ -5,7 +5,7 @@ XData ProductionDefinition
 {
 <Production Name="IRISAPPPKG.FoundationProduction" TestingEnabled="true" LogGeneralTraceEvents="true">
   <Description></Description>
-  <ActorPoolSize>2</ActorPoolSize>
+  <ActorPoolSize>5</ActorPoolSize>
 </Production>
 }
 
