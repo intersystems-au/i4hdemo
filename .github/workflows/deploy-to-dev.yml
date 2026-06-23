@@ -19,9 +19,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-
+        
       - name: Create Terminal Script (LINUX)
         shell: bash
+        env:
+          IRIS_USER: ${{ secrets.IRIS_USER }}
+          IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
+
         run: |
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
