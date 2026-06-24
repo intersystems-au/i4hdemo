@@ -12,9 +12,9 @@ jobs:
       matrix:
         include:
           - servertag: mirrorA
-            runner: [self-hosted, live, x64, A_Node]
+            runner: [self-hosted, live, A_Node]
           - servertag: mirrorB
-            runner: [self-hosted, live, x64, B_Node]
+            runner: [self-hosted, live, B_Node]
     runs-on: ${{ matrix.runner }}
     environment: live
     
@@ -27,12 +27,11 @@ jobs:
         env:
           IRIS_USER: ${{ secrets.IRIS_USER }}
           IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
-          
         run: |
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
           ${IRIS_PASSWORD}
-          if ##class(%SYSTEM.Mirror).IsPrimary() do ##class(SourceControl.Git.API).Pull(1)
+          if ##class(\%SYSTEM.Mirror).IsPrimary() do ##class(SourceControl.Git.API).Pull(1)
           halt
           EOF
           echo "Terminal script created successfully"
