@@ -34,7 +34,7 @@ jobs:
           ${IRIS_PASSWORD}
           do ##class(SourceControl.Git.API).Pull(1)
           set ^UnitTestRoot="/home/irisusr/GITDEV/IRISAPP/i4hdemo/cls/Tests"
-          if ##class(%RoutineMgr).Exists("Tests.IRISAPP") do $ClassMethod("Tests.IRISAPP","Run")
+          if ##class(%RoutineMgr).Exists("Tests.IRISAPP.cls") do $ClassMethod("Tests.IRISAPP","Run")
           halt
           EOF
           echo "Terminal script created successfully"
