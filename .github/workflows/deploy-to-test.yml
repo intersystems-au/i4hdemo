@@ -27,10 +27,14 @@ jobs:
           IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
 
         run: |
+          UnitTestRootClass="Tests.IRISAPP"
+          UnitTestRoot="$(dirname "${GITHUB_WORKSPACE}")/src/class/Tests"
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
           ${IRIS_PASSWORD}
           do ##class(SourceControl.Git.API).Pull(1)
+          
+          if ##class(%RoutineMGR).Exists(${UnitTestRootClass}) set ^UnitTestRoot=${UnitTestRoot} do $ClassMethod(${UnitTestRootClass},"Run")
           halt
           EOF
           echo "Terminal script created successfully"
