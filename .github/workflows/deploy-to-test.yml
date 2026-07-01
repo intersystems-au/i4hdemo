@@ -25,7 +25,7 @@ jobs:
         env:
           IRIS_USER: ${{ secrets.IRIS_USER }}
           IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
-          TESTS_ROOT_EXPORT_FOLDER: #{{ env.TESTS_ROOT_EXPORT_FOLDER }}
+          TESTS_ROOT_EXPORT_FOLDER: #{{ vars.TESTS_ROOT_EXPORT_FOLDER }}
         run: |
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
