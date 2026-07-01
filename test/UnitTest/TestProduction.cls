@@ -1,4 +1,4 @@
-Class Tests.IRISAPP Extends %UnitTest.TestProduction
+Class UnitTest.TestProduction Extends %UnitTest.TestProduction
 {
 /// Production to test
 Parameter PRODUCTION = "IRISAPPPKG.FoundationProduction";
