@@ -31,7 +31,7 @@ jobs:
           ${IRIS_USER}
           ${IRIS_PASSWORD}
           do ##class(SourceControl.Git.API).Pull(1)
-          set ^UnitTestRoot="${GITHUB_WORKSPACE}/${TEST_ROOT_FOLDER}"
+          set ^UnitTestRoot="${GITHUB_WORKSPACE}${TESTS_ROOT_EXPORT_FOLDER}"
           if ##class(%File).DirectoryExists(^UnitTestRoot) do ##Class(%UnitTest.Manager).RunTest()
           halt
           EOF
