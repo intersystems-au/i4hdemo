@@ -34,7 +34,7 @@ jobs:
           ${IRIS_PASSWORD}
           do ##class(SourceControl.Git.API).Pull(1)
           set ^UnitTestRoot="${GITHUB_WORKSPACE}${TEST_ROOT_FOLDER}"
-          if ##class(%File).DirectoryExists(^UnitTestRoot),##class(%RoutineMgr).Exists("${TEST_CLASSNAME}.cls") ; do \$ClassMethod(${TEST_CLASSNAME},"Run")
+          if ##class(%File).DirectoryExists(^UnitTestRoot),##class(%RoutineMgr).Exists("${TEST_CLASSNAME}.cls") do \$ClassMethod(${TEST_CLASSNAME},"Run")
           halt
           EOF
           echo "Terminal script created successfully"
