@@ -25,12 +25,14 @@ jobs:
         env:
           IRIS_USER: ${{ secrets.IRIS_USER }}
           IRIS_PASSWORD: ${{ secrets.IRIS_PASSWORD }}
-
+          TESTS_ROOT_EXPORT_FOLDER: ${{ vars.TESTS_ROOT_EXPORT_FOLDER }}
         run: |
           cat > "${GITHUB_WORKSPACE}/deploy.scr" <<EOF
           ${IRIS_USER}
           ${IRIS_PASSWORD}
           do ##class(SourceControl.Git.API).Pull(1)
+          set ^UnitTestRoot="${GITHUB_WORKSPACE}${TESTS_ROOT_EXPORT_FOLDER}"
+          if ##class(%File).DirectoryExists(^UnitTestRoot) do ##Class(%UnitTest.Manager).RunTest()
           halt
           EOF
           echo "Terminal script created successfully"
