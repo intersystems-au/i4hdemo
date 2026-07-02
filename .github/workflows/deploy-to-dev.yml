@@ -12,7 +12,7 @@ jobs:
       matrix:
         include:
           - servertag: development 
-            runner: [self-hosted, linux, x64, development]
+            runner: [self-hosted, linux, x64, dev]
     runs-on: ${{ matrix.runner }}
     environment: development
     
