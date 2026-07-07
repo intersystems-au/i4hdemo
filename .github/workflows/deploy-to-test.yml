@@ -31,6 +31,7 @@ jobs:
           ${IRIS_USER}
           ${IRIS_PASSWORD}
           do ##class(SourceControl.Git.API).Pull(1)
+          if ##class(%Library.EnsembleMgr).IsEnsembleNamespace($ZN),##class(Ens.Director).ProductionNeedsUpdate() do ##class(Ens.Director).UpdateProduction()
           set ^UnitTestRoot="${GITHUB_WORKSPACE}${TESTS_ROOT_EXPORT_FOLDER}"
           if ##class(%File).DirectoryExists(^UnitTestRoot) do ##Class(%UnitTest.Manager).RunTest()
           halt
