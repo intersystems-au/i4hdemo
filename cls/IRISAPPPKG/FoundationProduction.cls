@@ -9,7 +9,7 @@ XData ProductionDefinition
   <Item Name="dummyTest" Category="" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Operation.FileOperation</Setting>
     <Setting Target="Host" Name="Filename">%f_%Q%!+(_a)</Setting>
-    <Setting Target="Adapter" Name="FilePath">/tmp/bad</Setting>
+    <Setting Target="Adapter" Name="FilePath">/tmp</Setting>
   </Item>
 </Production>
 }
