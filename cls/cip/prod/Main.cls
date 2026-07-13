@@ -15,7 +15,7 @@ XData ProductionDefinition
   </Item>
   <Item Name="HL7FileOperation" Category="" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="This is a default HL7 File Operation." LogTraceEvents="false" Schedule="">
   </Item>
-  <Item Name="006_ConvertADT to FHIR" Category="" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+  <Item Name="006_Convert FHIR" Category="" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="Validation"></Setting>
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router006</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
@@ -32,14 +32,6 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="Port">9004</Setting>
     <Setting Target="Adapter" Name="Framing">MLLP</Setting>
   </Item>
-  <Item Name="INT_006" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
-    <Setting Target="Host" Name="MessageSchemaCategory">2.4,2.3.1</Setting>
-    <Setting Target="Adapter" Name="Port">5006</Setting>
-    <Setting Target="Host" Name="TargetConfigNames">006_ConvertADT to FHIR</Setting>
-    <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
-    <Setting Target="Host" Name="Framing">MLLP</Setting>
-  </Item>
   <Item Name="INT_001" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5001</Setting>
@@ -51,6 +43,51 @@ XData ProductionDefinition
   <Item Name="INT_003" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5003</Setting>
+  </Item>
+    <Item Name="INT_004" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5004</Setting>
+  </Item>
+    <Item Name="INT_005" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5005</Setting>
+  </Item>
+
+  <Item Name="INT_006" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">2.4,2.3.1</Setting>
+    <Setting Target="Adapter" Name="Port">5006</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">006_ConvertADT to FHIR</Setting>
+    <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
+    <Setting Target="Host" Name="Framing">MLLP</Setting>
+  </Item>
+    <Item Name="INT_007" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5007</Setting>
+  </Item>
+    <Item Name="INT_008" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5008</Setting>
+  </Item>
+    <Item Name="INT_009" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5009</Setting>
+  </Item>
+  <Item Name="INT_010" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5010</Setting>
+  </Item>
+  <Item Name="INT_011" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5011</Setting>
+  </Item>
+  <Item Name="INT_012" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5012</Setting>
+  </Item>
+  <Item Name="INT_013" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+    <Setting Target="Adapter" Name="Port">5013</Setting>
   </Item>
   <Item Name="test2.hl7.v24.TCP" Category="Test2" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="Test 2 inbound - INT-004 mask PID, then INT-005 convert v2.4 to v2.3.1" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
