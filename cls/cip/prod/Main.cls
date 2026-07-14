@@ -16,7 +16,7 @@ XData ProductionDefinition
   </Item>
   <Item Name="HL7FileOperation" Category="" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="This is a default HL7 File Operation." LogTraceEvents="false" Schedule="">
   </Item>
-  <Item Name="006_Convert FHIR" Category="" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+  <Item Name="006_Convert FHIR" Category="Test3" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="Validation"></Setting>
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router006</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
@@ -41,13 +41,18 @@ XData ProductionDefinition
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5002</Setting>
   </Item>
-  <Item Name="INT_003" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_003" Category="Test4,Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5003</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">2.4</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">003_ValidateORUMissingOBX</Setting>
+    <Setting Target="Host" Name="AckMode">App</Setting>
   </Item>
-  <Item Name="INT_004" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_004" Category="Test2" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5004</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">2.3.1</Setting>
+    <Setting Target="Host" Name="TargetConfigNames"></Setting>
   </Item>
   <Item Name="INT_005" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
@@ -80,10 +85,14 @@ XData ProductionDefinition
   <Item Name="INT_011" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5011</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">2.3.1</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">011_MapGenderToStandard</Setting>
+    <Setting Target="Host" Name="AckMode">App</Setting>
   </Item>
   <Item Name="INT_012" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5012</Setting>
+    <Setting Target="Host" Name="AckMode">App</Setting>
   </Item>
   <Item Name="INT_013" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
@@ -100,9 +109,27 @@ XData ProductionDefinition
   <Item Name="Message SINK" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="Speak to STEVE" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Port">9000</Setting>
   </Item>
-  <Item Name="Message SINK out" Category="" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="HL7 TCP Out" Category="Test4,Test3" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="IPAddress">localhost</Setting>
     <Setting Target="Adapter" Name="Port">9000</Setting>
+  </Item>
+  <Item Name="003_ValidateORUMissingOBX" Category="Test3,Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router003</Setting>
+    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
+  </Item>
+  <Item Name="011_MapGenderToStandard" Category="Test3,Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router011</Setting>
+    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
+  </Item>
+  <Item Name="012_FilterOutpatientBadDepartment" Category="Test3,Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="false" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router011</Setting>
+    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
 </Production>
 }
