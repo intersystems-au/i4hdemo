@@ -1,0 +1,23 @@
+/// 
+Class cip.rul.Router011 Extends Ens.Rule.Definition
+{
+
+Parameter RuleAssistClass = "EnsLib.HL7.MsgRouter.RuleAssist";
+
+XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
+{
+<ruleDefinition alias="" context="EnsLib.HL7.MsgRouter.RoutingEngine" production="cip.prod.Main">
+<ruleSet name="" effectiveBegin="" effectiveEnd="">
+<rule name="INT-011 Map source Gender Value">
+<constraint name="source" value="INT_011"></constraint>
+<constraint name="docCategory" value="2.3.1"></constraint>
+<constraint name="docName" value="ADT_A01"></constraint>
+<when condition="1" comment="">
+<send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="HL7 TCP Out"></send>
+</when>
+</rule>
+</ruleSet>
+</ruleDefinition>
+}
+
+}
