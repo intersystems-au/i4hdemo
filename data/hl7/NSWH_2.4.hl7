@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<Category name="NSWH_2.4" base="2.4">
+
+<MessageType name='ADT_A01' structure='ADT_A01' returntype='base:ACK_A01' description='ADT message - Admit / visit notification'/>
+<MessageType name='ORM_O01' structure='ORM_O01' description='Pharmacy/treatment order message - Order message (also RDE, RDS, RGV, RAS)'/>
+<MessageType name='ORU_R01' structure='ORU_R01' returntype='base:ACK_R01' description='Unsolicited transmission of an observation message - Unsolicited transmission of an observation message'/>
+
+<MessageStructure name='ADT_A01' definition='base:MSH~base:EVN~base:PID~[~base:PD1~]~[~{~base:ROL~}~]~[~{~base:NK1~}~]~base:PV1~[~base:PV2~]~[~{~base:ROL~}~]~[~{~base:DB1~}~]~[~{~base:OBX~}~]~[~{~base:AL1~}~]~[~{~base:DG1~}~]~[~base:DRG~]~[~{~base:PR1~[~{~base:ROL~}~]~}~]~[~{~base:GT1~}~]~[~{~base:IN1~[~base:IN2~]~[~{~base:IN3~}~]~[~{~base:ROL~}~]~}~]~[~ZAC~]~[~base:ACC~]~[~base:UB1~]~[~base:UB2~]~[~base:PDA~]' description='ADT message - Admit / visit notification'/>
+<MessageStructure name='ORM_O01' definition='base:MSH~[~{~base:NTE~}~]~[~base:PID~[~base:PD1~]~[~{~base:NTE~}~]~[~base:PV1~[~base:PV2~]~]~[~{~base:IN1~[~base:IN2~]~[~base:IN3~]~}~]~[~base:GT1~]~[~{~base:AL1~}~]~]~{~base:ORC~[~&lt;~base:OBR~|~base:RQD~|~base:RQ1~|~base:RXO~|~base:ODS~|~base:ODT~&gt;~[~{~base:NTE~}~]~[~base:CTD~]~[~{~base:DG1~}~]~[~{~base:OBX~[~{~base:NTE~}~]~}~]~]~[~{~base:FT1~}~]~[~{~base:CTI~}~]~[~base:BLG~]~}'/>
+<MessageStructure name='ORU_R01' definition='base:MSH~{~[~base:PID~[~base:PD1~]~[~{~base:NK1~}~]~[~{~base:NTE~}~]~[~base:PV1~[~base:PV2~]~]~]~{~[~base:ORC~]~OBR~[~{~base:NTE~}~]~[~base:CTD~]~{~OBX~[~{~base:NTE~}~]~}~[~{~base:FT1~}~]~[~{~base:CTI~}~]~}~}~[~base:DSC~]' description='Unsolicited transmission of an observation message - Unsolicited transmission of an observation message'/>
+
+<SegmentStructure name='OBR' description='Observation Request'>
+    <SegmentSubStructure piece='1' description='Set ID - OBR' datatype='base:SI' max_length='4' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='2' description='Placer Order Number' datatype='base:EI' symbol='?' max_length='22' required='C' ifrepeating='0'/>
+    <SegmentSubStructure piece='3' description='Filler Order Number' datatype='base:EI' symbol='?' max_length='22' required='C' ifrepeating='0'/>
+    <SegmentSubStructure piece='4' description='Universal Service Identifier' datatype='base:CE' symbol='!' max_length='250' required='R' ifrepeating='0'/>
+    <SegmentSubStructure piece='5' description='Priority' datatype='base:ID' max_length='2' required='B' ifrepeating='0'/>
+    <SegmentSubStructure piece='6' description='Requested Date/Time' datatype='base:TS' max_length='26' required='B' ifrepeating='0'/>
+    <SegmentSubStructure piece='7' description='Observation Date/Time #' datatype='base:TS' symbol='!' max_length='26' required='R' ifrepeating='0'/>
+    <SegmentSubStructure piece='8' description='Observation End Date/Time #' datatype='base:TS' max_length='26' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='9' description='Collection Volume *' datatype='base:CQ' max_length='20' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='10' description='Collector Identifier *' datatype='base:XCN' symbol='*' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='11' description='Specimen Action Code *' datatype='base:ID' max_length='1' required='O' ifrepeating='0' codetable='base:65'/>
+    <SegmentSubStructure piece='12' description='Danger Code' datatype='base:CE' max_length='250' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='13' description='Relevant Clinical Info.' datatype='base:ST' max_length='300' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='14' description='Specimen Received Date/Time *' datatype='base:TS' symbol='?' max_length='26' required='C' ifrepeating='0'/>
+    <SegmentSubStructure piece='15' description='Specimen Source' datatype='base:SPS' max_length='300' required='O' ifrepeating='0' codetable='base:70'/>
+    <SegmentSubStructure piece='16' description='Ordering Provider' datatype='base:XCN' symbol='*' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='17' description='Order Callback Phone Number' datatype='base:XTN' symbol='*' repeatcount='2' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='18' description='Placer Field 1' datatype='base:ST' max_length='60' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='19' description='Placer Field 2' datatype='base:ST' max_length='60' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='20' description='Filler Field 1 +' datatype='base:ST' max_length='60' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='21' description='Filler Field 2 +' datatype='base:ST' max_length='60' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='22' description='Results Rpt/Status Chng - Date/Time +' datatype='base:TS' symbol='?' max_length='26' required='C' ifrepeating='0'/>
+    <SegmentSubStructure piece='23' description='Charge to Practice +' datatype='base:MOC' max_length='40' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='24' description='Diagnostic Serv Sect ID' datatype='base:ID' max_length='10' required='O' ifrepeating='0' codetable='base:74'/>
+    <SegmentSubStructure piece='25' description='Result Status +' datatype='base:ID' symbol='?' max_length='1' required='C' ifrepeating='0' codetable='base:123'/>
+    <SegmentSubStructure piece='26' description='Parent Result +' datatype='base:PRL' max_length='400' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='27' description='Quantity/Timing' datatype='base:TQ' symbol='*' max_length='200' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='28' description='Result Copies To' datatype='base:XCN' symbol='*' repeatcount='5' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='29' description='Parent' datatype='base:EIP' max_length='200' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='30' description='Transportation Mode' datatype='base:ID' max_length='20' required='O' ifrepeating='0' codetable='base:124'/>
+    <SegmentSubStructure piece='31' description='Reason for Study' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='32' description='Principal Result Interpreter +' datatype='base:NDL' max_length='200' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='33' description='Assistant Result Interpreter +' datatype='base:NDL' symbol='*' max_length='200' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='34' description='Technician +' datatype='base:NDL' symbol='*' max_length='200' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='35' description='Transcriptionist +' datatype='base:NDL' symbol='*' max_length='200' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='36' description='Scheduled Date/Time +' datatype='base:TS' max_length='26' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='37' description='Number of Sample Containers *' datatype='base:NM' max_length='4' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='38' description='Transport Logistics of Collected Sample *' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='39' description='Collector&apos;s Comment *' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='40' description='Transport Arrangement Responsibility' datatype='base:CE' max_length='250' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='41' description='Transport Arranged' datatype='base:ID' max_length='30' required='O' ifrepeating='0' codetable='base:224'/>
+    <SegmentSubStructure piece='42' description='Escort Required' datatype='base:ID' max_length='1' required='O' ifrepeating='0' codetable='base:225'/>
+    <SegmentSubStructure piece='43' description='Planned Patient Transport Comment' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='44' description='Procedure Code' datatype='base:CE' max_length='250' required='O' ifrepeating='0' codetable='base:88'/>
+    <SegmentSubStructure piece='45' description='Procedure Code Modifier' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1' codetable='base:340'/>
+    <SegmentSubStructure piece='46' description='Placer Supplemental Service Information' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1' codetable='base:411'/>
+    <SegmentSubStructure piece='47' description='Filler Supplemental Service Information' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1' codetable='base:411'/>
+</SegmentStructure>
+<SegmentStructure name='OBX' description='Observation/Result'>
+    <SegmentSubStructure piece='1' description='Set ID - OBX' datatype='base:SI' max_length='4' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='2' description='Value Type' datatype='base:ID' symbol='?' max_length='2' required='C' ifrepeating='0' codetable='base:125'/>
+    <SegmentSubStructure piece='3' description='Observation Identifier' datatype='base:CE' symbol='!' max_length='250' required='R' ifrepeating='0'/>
+    <SegmentSubStructure piece='4' description='Observation Sub-Id' datatype='base:ST' symbol='?' max_length='20' required='C' ifrepeating='0'/>
+    <SegmentSubStructure piece='5' description='Observation Value' symbol='+' required='R' ifrepeating='1'/>
+    <SegmentSubStructure piece='6' description='Units' datatype='base:CE' max_length='250' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='7' description='References Range' datatype='base:ST' max_length='60' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='8' description='Abnormal Flags' datatype='base:IS' max_length='5' required='O' ifrepeating='0' codetable='base:78'/>
+    <SegmentSubStructure piece='9' description='Probability' datatype='base:NM' symbol='*' repeatcount='5' max_length='5' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='10' description='Nature of Abnormal Test' datatype='base:ID' max_length='2' required='O' ifrepeating='0' codetable='base:80'/>
+    <SegmentSubStructure piece='11' description='Observation Result Status' datatype='base:ID' symbol='!' max_length='1' required='R' ifrepeating='0' codetable='base:85'/>
+    <SegmentSubStructure piece='12' description='Date Last Observation Normal Value' datatype='base:TS' max_length='26' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='13' description='User Defined Access Checks' datatype='base:ST' max_length='20' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='14' description='Date/Time of the Observation' datatype='base:TS' max_length='26' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='15' description='Producer&apos;s ID' datatype='base:CE' max_length='250' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='16' description='Responsible Observer' datatype='base:XCN' max_length='250' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='17' description='Observation Method' datatype='base:CE' symbol='*' max_length='250' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='18' description='Equipment Instance Identifier' datatype='base:EI' symbol='*' max_length='22' required='O' ifrepeating='1'/>
+    <SegmentSubStructure piece='19' description='Date/Time of the Analysis' datatype='base:TS' max_length='26' required='O' ifrepeating='0'/>
+</SegmentStructure>
+<SegmentStructure name='ZAC' description='ZAC NSWH Custom Segment'>
+    <SegmentSubStructure piece='1' description='Field1' required='O' ifrepeating='0'/>
+</SegmentStructure>
+
+</Category>

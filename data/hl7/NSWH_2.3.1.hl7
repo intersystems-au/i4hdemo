@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<Category name="NSWH_2.3.1" base="2.3.1">
+
+<MessageType name='ADT_A01' structure='ADT_A01' returntype='base:ACK_A01' description='ADT message - Admit / visit notification'/>
+
+<MessageStructure name='ADT_A01' definition='base:MSH~base:EVN~base:PID~[~base:PD1~]~[~{~base:NK1~}~]~base:PV1~[~base:PV2~]~[~ZPV~]~[~{~base:DB1~}~]~[~{~base:OBX~}~]~[~{~base:AL1~}~]~[~{~base:DG1~}~]~[~base:DRG~]~[~{~base:PR1~[~{~base:ROL~}~]~}~]~[~{~base:GT1~}~]~[~{~base:IN1~[~base:IN2~]~[~{~base:IN3~}~]~}~]~[~base:ACC~]~[~base:UB1~]~[~base:UB2~]' description='ADT message - Admit / visit notification'/>
+
+<SegmentStructure name='ZPV' description='NSW ADT Custom Segment example'>
+    <SegmentSubStructure piece='1' description='Field1' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='2' description='Field2' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='3' description='Field3' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='4' description='Field4' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='5' description='Field5' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='6' description='Field6' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='7' description='Field7' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='8' description='Field8' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='9' description='Field9' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='10' description='Field10' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='11' description='Field11' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='12' description='Field12' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='13' description='Field13' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='14' description='Field14' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='15' description='Field15' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='16' description='Field16' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='17' description='Field17' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='18' description='Field18' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='19' description='Field19' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='20' description='Field20' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='21' description='Field21' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='22' description='Field22' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='23' description='Field23' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='24' description='Field24' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='25' description='Field25' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='26' description='Field26' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='27' description='Field27' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='28' description='Field28' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='29' description='Field29' required='O' ifrepeating='0'/>
+    <SegmentSubStructure piece='30' description='Field30' required='O' ifrepeating='0'/>
+</SegmentStructure>
+
+</Category>
