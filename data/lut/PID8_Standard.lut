@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<lookupTable>
+<entry table="PID8_Standard" key="Female">F</entry>
+<entry table="PID8_Standard" key="Male">M</entry>
+<entry table="PID8_Standard" key="Other">O</entry>
+</lookupTable>
