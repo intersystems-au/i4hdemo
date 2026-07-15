@@ -22,47 +22,43 @@ XData ProductionDefinition
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
     <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
-  <Item Name="test2.ADT.MaskAndConvert" Category="Test2" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="Applies INT-004 mask PID + INT-005 convert ADT^A01 v2.4 to v2.3.1" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="Validation"></Setting>
-    <Setting Target="Host" Name="BusinessRuleName">cip.rul.RouterTest2</Setting>
-    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
-    <Setting Target="Host" Name="AlertOnError">1</Setting>
-  </Item>
-  <Item Name="test2.hl7.v231.TCP" Category="Test2" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="Test 2 outbound - sends the masked/converted ADT^A01 (v2.3.1) downstream over MLLP" LogTraceEvents="false" Schedule="">
-    <Setting Target="Adapter" Name="IPAddress"></Setting>
-    <Setting Target="Adapter" Name="Port">9004</Setting>
-    <Setting Target="Adapter" Name="Framing">MLLP</Setting>
-  </Item>
   <Item Name="INT_001" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5001</Setting>
   </Item>
-  <Item Name="INT_002" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+  <Item Name="INT_002" Category="Test1" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="INT-002 inbound - route by MSH-4" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Port">5002</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4,NSWH_2.3.1</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">002_Route by MSH-4</Setting>
+    <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
+    <Setting Target="Host" Name="Framing">MLLP</Setting>
   </Item>
   <Item Name="INT_003" Category="Test4,Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5003</Setting>
-    <Setting Target="Host" Name="MessageSchemaCategory">2.4</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
     <Setting Target="Host" Name="TargetConfigNames">003_ValidateORUMissingOBX</Setting>
     <Setting Target="Host" Name="AckMode">App</Setting>
   </Item>
-  <Item Name="INT_004" Category="Test2" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+  <Item Name="INT_004" Category="Test2" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="INT-004 inbound - mask PID only" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Port">5004</Setting>
-    <Setting Target="Host" Name="MessageSchemaCategory">2.3.1</Setting>
-    <Setting Target="Host" Name="TargetConfigNames"></Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">004_ADT Mask PID</Setting>
+    <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
+    <Setting Target="Host" Name="Framing">MLLP</Setting>
   </Item>
-  <Item Name="INT_005" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
+  <Item Name="INT_005" Category="Test2" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="INT-005 inbound - convert v2.4 to v2.3.1 only" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Port">5005</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">005_ADT Version 2.4 to 2.3.1</Setting>
+    <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
+    <Setting Target="Host" Name="Framing">MLLP</Setting>
   </Item>
   <Item Name="INT_006" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
-    <Setting Target="Host" Name="MessageSchemaCategory">2.4,2.3.1</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.3.1,NSWH_2.4</Setting>
     <Setting Target="Adapter" Name="Port">5006</Setting>
-    <Setting Target="Host" Name="TargetConfigNames">006_ConvertADT to FHIR</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">006_Convert FHIR</Setting>
     <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
     <Setting Target="Host" Name="Framing">MLLP</Setting>
   </Item>
@@ -82,29 +78,24 @@ XData ProductionDefinition
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5010</Setting>
   </Item>
-  <Item Name="INT_011" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_011" Category="Test4" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5011</Setting>
-    <Setting Target="Host" Name="MessageSchemaCategory">2.3.1</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.3.1</Setting>
     <Setting Target="Host" Name="TargetConfigNames">011_MapGenderToStandard</Setting>
     <Setting Target="Host" Name="AckMode">App</Setting>
   </Item>
-  <Item Name="INT_012" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_012" Category="Test4" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5012</Setting>
     <Setting Target="Host" Name="AckMode">App</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.3.1</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">012_FilterOutpatientBadDepartment</Setting>
   </Item>
-  <Item Name="INT_013" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_013" Category="Test4" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5013</Setting>
-  </Item>
-  <Item Name="test2.hl7.v24.TCP" Category="Test2" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="Test 2 inbound - INT-004 mask PID, then INT-005 convert v2.4 to v2.3.1" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
-    <Setting Target="Host" Name="MessageSchemaCategory">2.4</Setting>
-    <Setting Target="Adapter" Name="Port">9004</Setting>
-    <Setting Target="Host" Name="TargetConfigNames">test2.ADT.MaskAndConvert</Setting>
-    <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
-    <Setting Target="Host" Name="Framing">MLLP</Setting>
+    <Setting Target="Host" Name="AckMode">App</Setting>
   </Item>
   <Item Name="Message SINK" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="Speak to STEVE" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Port">9000</Setting>
@@ -113,23 +104,67 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="IPAddress">localhost</Setting>
     <Setting Target="Adapter" Name="Port">9000</Setting>
   </Item>
-  <Item Name="003_ValidateORUMissingOBX" Category="Test3,Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="Validation">dm-z</Setting>
+  <Item Name="003_ValidateORUMissingOBX" Category="Test4,Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="Validation">dmr-z</Setting>
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router003</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
     <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
-  <Item Name="011_MapGenderToStandard" Category="Test3,Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+  <Item Name="011_MapGenderToStandard" Category="Test4,Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="Validation">dm-z</Setting>
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router011</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
     <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
-  <Item Name="012_FilterOutpatientBadDepartment" Category="Test3,Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="false" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
+  <Item Name="012_FilterOutpatientBadDepartment" Category="Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="Validation">dm-z</Setting>
-    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router011</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router012</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
     <Setting Target="Host" Name="AlertOnError">1</Setting>
+    <Setting Target="Host" Name="ResponseFrom">012_BadLocation_NACK</Setting>
+  </Item>
+  <Item Name="012_BadLocation_NACK" Category="Test4" ClassName="cip.bpl.RaiseBadFacilityNACK" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+  </Item>
+  <Item Name="004_ADT Mask PID" Category="Test2" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="Applies INT-004 mask PID only" LogTraceEvents="true" Schedule="">
+    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router004</Setting>
+    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
+    <Setting Target="Host" Name="RuleLogging">a</Setting>
+  </Item>
+  <Item Name="005_ADT Version 2.4 to 2.3.1" Category="Test2" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="Applies INT-005 convert ADT^A01 v2.4 to v2.3.1 only" LogTraceEvents="true" Schedule="">
+    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router005</Setting>
+    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
+    <Setting Target="Host" Name="RuleLogging">a</Setting>
+  </Item>
+  <Item Name="004_005_DST" Category="Test2" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="Shared outbound for INT-004 and INT-005 (masked ADT^A01 v2.4 / converted ADT^A01 v2.3.1)" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="IPAddress"></Setting>
+    <Setting Target="Adapter" Name="Port"></Setting>
+    <Setting Target="Adapter" Name="Framing">MLLP</Setting>
+  </Item>
+  <Item Name="002_Route by MSH-4" Category="Test1" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="Applies INT-002 route by MSH-4 to one of 3 destinations" LogTraceEvents="true" Schedule="">
+    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router002</Setting>
+    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
+    <Setting Target="Host" Name="RuleLogging">a</Setting>
+  </Item>
+  <Item Name="002_DST_SH01" Category="Test1" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="INT-002 destination for MSH-4=SH-01" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="IPAddress"></Setting>
+    <Setting Target="Adapter" Name="Port"></Setting>
+    <Setting Target="Adapter" Name="Framing">MLLP</Setting>
+  </Item>
+  <Item Name="002_DST_SH02" Category="Test1" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="INT-002 destination for MSH-4=SH-02" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="IPAddress"></Setting>
+    <Setting Target="Adapter" Name="Port"></Setting>
+    <Setting Target="Adapter" Name="Framing">MLLP</Setting>
+  </Item>
+  <Item Name="002_DST_SH03" Category="Test1" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="INT-002 destination for MSH-4=SH-03" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="IPAddress"></Setting>
+    <Setting Target="Adapter" Name="Port"></Setting>
+    <Setting Target="Adapter" Name="Framing">MLLP</Setting>
   </Item>
 </Production>
 }
