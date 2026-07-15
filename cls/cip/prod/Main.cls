@@ -95,7 +95,9 @@ XData ProductionDefinition
   <Item Name="INT_013" Category="Test4" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5013</Setting>
-    <Setting Target="Host" Name="AckMode">App</Setting>
+    <Setting Target="Host" Name="AckMode">Immed</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">013_TransformVendorOBXCodes</Setting>
   </Item>
   <Item Name="Message SINK" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="Speak to STEVE" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Port">9000</Setting>
@@ -165,6 +167,9 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="IPAddress"></Setting>
     <Setting Target="Adapter" Name="Port"></Setting>
     <Setting Target="Adapter" Name="Framing">MLLP</Setting>
+  </Item>
+  <Item Name="013_TransformVendorOBXCodes" Category="Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router013</Setting>
   </Item>
 </Production>
 }
