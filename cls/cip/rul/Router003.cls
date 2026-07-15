@@ -10,7 +10,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <ruleSet name="" effectiveBegin="" effectiveEnd="">
 <rule name="If ADT Message Event type">
 <constraint name="source" value="Test3"></constraint>
-<constraint name="docCategory" value="2.4"></constraint>
+<constraint name="docCategory" value="NSWH_2.4"></constraint>
 <constraint name="docName" value="ORU_R01"></constraint>
 <when condition="(HL7.{MSH:MessageType.messagetype}=&quot;ORU&quot;)||(HL7.{MSH:MessageType.messagetype}=&quot;ORM&quot;)" comment="">
 <send transform="" target="HL7 TCP Out"></send>
