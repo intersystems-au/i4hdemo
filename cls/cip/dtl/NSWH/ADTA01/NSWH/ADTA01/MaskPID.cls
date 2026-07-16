@@ -7,7 +7,7 @@ Parameter REPORTERRORS = 1;
 
 XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 {
-<transform sourceClass="EnsLib.HL7.Message" targetClass="EnsLib.HL7.Message" sourceDocType="2.4:ADT_A01" targetDocType="2.4:ADT_A01" create="copy" language="objectscript" >
+<transform sourceClass="EnsLib.HL7.Message" targetClass="EnsLib.HL7.Message" sourceDocType="NSWH_2.4:ADT_A01" targetDocType="NSWH_2.4:ADT_A01" create="copy" language="objectscript" >
 
   <!-- PID-5.1: last name -->
   <assign value='"XXXX"' property='target.{PID:5.1}' action='set' />
