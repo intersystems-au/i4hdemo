@@ -7,7 +7,7 @@ Parameter REPORTERRORS = 1;
 
 XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 {
-<transform sourceClass="EnsLib.HL7.Message" targetClass="EnsLib.HL7.Message" sourceDocType="2.4:ADT_A01" targetDocType="2.3.1:ADT_A01" create="copy" language="objectscript" >
+<transform sourceClass="EnsLib.HL7.Message" targetClass="EnsLib.HL7.Message" sourceDocType="NSWH_2.4:ADT_A01" targetDocType="NSWH_2.3.1:ADT_A01" create="copy" language="objectscript" >
 
   <!-- MSH-12: version ID -> 2.3.1 -->
   <assign value='"2.3.1"' property='target.{MSH:12}' action='set' />
