@@ -12,8 +12,17 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <constraint name="source" value="INT_011"></constraint>
 <constraint name="docCategory" value="NSWH_2.3.1"></constraint>
 <constraint name="docName" value="ADT_A01"></constraint>
-<when condition="1" comment="">
-<send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="HL7 TCP Out"></send>
+<when condition="HL7.{MSH:SendingFacility.namespaceID}=&quot;SH-01&quot;" comment="">
+<send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="Sender-1"></send>
+<return></return>
+</when>
+<when condition="HL7.{MSH:SendingFacility.namespaceID}=&quot;SH-01&quot;" comment="">
+<send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="Sender-2"></send>
+<return></return>
+</when>
+<when condition="HL7.{MSH:SendingFacility.namespaceID}=&quot;SH-01&quot;" comment="">
+<send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="Sender-3"></send>
+<return></return>
 </when>
 </rule>
 </ruleSet>
