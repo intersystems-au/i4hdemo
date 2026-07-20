@@ -74,10 +74,6 @@ XData ProductionDefinition
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5009</Setting>
   </Item>
-  <Item Name="INT_010" Category="" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
-    <Setting Target="Adapter" Name="Port">5010</Setting>
-  </Item>
   <Item Name="INT_011" Category="Test4" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Adapter" Name="Port">5011</Setting>
@@ -170,6 +166,18 @@ XData ProductionDefinition
   </Item>
   <Item Name="013_TransformVendorOBXCodes" Category="Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router013</Setting>
+  </Item>
+  <Item Name="Sender-1" Category="Test4" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="IPAddress">172.20.20.5</Setting>
+    <Setting Target="Adapter" Name="Port">22241</Setting>
+  </Item>
+  <Item Name="Sender-2" Category="Test4" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="IPAddress">172.20.20.5</Setting>
+    <Setting Target="Adapter" Name="Port">22242</Setting>
+  </Item>
+  <Item Name="Sender-3" Category="Test4" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="IPAddress">172.20.20.5</Setting>
+    <Setting Target="Adapter" Name="Port">22243</Setting>
   </Item>
 </Production>
 }
