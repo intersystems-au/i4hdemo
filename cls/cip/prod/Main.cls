@@ -29,7 +29,7 @@ XData ProductionDefinition
   </Item>
   <Item Name="test2.hl7.v231.TCP" Category="Test2" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="Test 2 outbound - sends the masked/converted ADT^A01 (v2.3.1) downstream over MLLP" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="IPAddress"></Setting>
-    <Setting Target="Adapter" Name="Port"></Setting>
+    <Setting Target="Adapter" Name="Port">9004</Setting>
     <Setting Target="Adapter" Name="Framing">MLLP</Setting>
   </Item>
   <Item Name="INT_006" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
@@ -55,7 +55,7 @@ XData ProductionDefinition
   <Item Name="test2.hl7.v24.TCP" Category="Test2" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="Test 2 inbound - INT-004 mask PID, then INT-005 convert v2.4 to v2.3.1" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Host" Name="MessageSchemaCategory">2.4</Setting>
-    <Setting Target="Adapter" Name="Port">5004</Setting>
+    <Setting Target="Adapter" Name="Port">9004</Setting>
     <Setting Target="Host" Name="TargetConfigNames">test2.ADT.MaskAndConvert</Setting>
     <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
     <Setting Target="Host" Name="Framing">MLLP</Setting>
