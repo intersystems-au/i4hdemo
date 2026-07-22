@@ -24,16 +24,16 @@ ClassMethod GetId(pResourceType As %String, pResourceIdentifier As %String, Outp
     if id = "" {
         set maxid = ""
         &SQL(Select max(ResourceID) into :maxid
-            From cip_util_IDMap 
+            From cip_util.IDMap 
             Where ResourceType = :pResourceType)
-        set id = maxid + 1
+       if SQLCODE =0 set id = maxid + 1
      }
     Quit id
 }
 
 ClassMethod AddId(pResourceType As %String, pResourceIdentifier As %String, id As %String) As %Status
 {
-    set st = ""
+    set st = $$$OK
     if id '= "" {
         set obj = ##class(cip.util.IDMap).%New()
         if obj {

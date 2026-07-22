@@ -9,12 +9,10 @@ XData ProductionDefinition
   <Item Name="BadMessageHandler" Category="" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="Bad messages are sent to this operation." LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="FilePath">/tmp</Setting>
   </Item>
-  <Item Name="Ens.Alert" Category="" ClassName="EnsLib.MsgRouter.RoutingEngine" PoolSize="0" Enabled="true" Foreground="false" Comment="This handles Alert routing logic." LogTraceEvents="false" Schedule="">
+  <Item Name="Ens.Alert" Category="Test1,Test2,Test3,Test4,Test5" ClassName="EnsLib.MsgRouter.RoutingEngine" PoolSize="0" Enabled="true" Foreground="false" Comment="This handles Alert routing logic." LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.AlertRule</Setting>
   </Item>
   <Item Name="EMailAlert" Category="" ClassName="EnsLib.EMail.AlertOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="This sends alerts via e-mail." LogTraceEvents="false" Schedule="">
-  </Item>
-  <Item Name="HL7FileOperation" Category="" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="This is a default HL7 File Operation." LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="INT_001" Category="Test3" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
@@ -25,7 +23,7 @@ XData ProductionDefinition
   </Item>
   <Item Name="INT_002" Category="Test1" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="INT-002 inbound - route by MSH-4" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Port">5002</Setting>
-    <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4,NSWH_2.3.1</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">*=NSWH_2.4,*=NSWH_2.3.1</Setting>
     <Setting Target="Host" Name="TargetConfigNames">002_Route by MSH-4</Setting>
     <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
     <Setting Target="Host" Name="Framing">MLLP</Setting>
@@ -59,7 +57,7 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="JobPerConnection">1</Setting>
     <Setting Target="Host" Name="Framing">MLLP</Setting>
   </Item>
-  <Item Name="INT_007" Category="Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_007" Category="Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Service.TCPService</Setting>
     <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
     <Setting Target="Adapter" Name="Port">5007</Setting>
@@ -92,14 +90,19 @@ XData ProductionDefinition
   <Item Name="001_Reject Non ADT" Category="Test3" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router001</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
   <Item Name="006_Transform HL7 to SDA" Category="Test3" ClassName="cip.bpl.TransformHL7toSDA" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
   <Item Name="006_Transform SDA to FHIR" Category="Test3" ClassName="cip.bpl.SDAtoFHIR" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="TargetConfigName">006_Save to FHIR Server_HTTP</Setting>
     <Setting Target="Host" Name="TransformClass">cip.util.TransformSDA3ToFHIR</Setting>
     <Setting Target="Host" Name="FHIRMetadataSet">HL7v40 / FHIR R4 Core Specification</Setting>
     <Setting Target="Host" Name="TraceOperations"></Setting>
+    <Setting Target="Host" Name="OutputToQuickStream">0</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
+    <Setting Target="Host" Name="CustomSDAtoFHIRDTLPackage">cip.dtl.FHIR</Setting>
   </Item>
   <Item Name="003_ValidateORUMissingOBX" Category="Test4,Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="Validation">dmr-z</Setting>
@@ -121,6 +124,7 @@ XData ProductionDefinition
     <Setting Target="Host" Name="ResponseFrom">012_BadLocation_NACK</Setting>
   </Item>
   <Item Name="012_BadLocation_NACK" Category="Test4" ClassName="cip.bpl.RaiseBadFacilityNACK" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
   <Item Name="004_ADT Mask PID" Category="Test2" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="Applies INT-004 mask PID only" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="Validation">dm-z</Setting>
@@ -165,6 +169,7 @@ XData ProductionDefinition
   </Item>
   <Item Name="013_TransformVendorOBXCodes" Category="Test4" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router013</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
   <Item Name="Sender-1" Category="Test4" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="IPAddress">172.20.20.5</Setting>
@@ -186,13 +191,15 @@ XData ProductionDefinition
   <Item Name="006_Save to FHIR Server_HTTP" Category="Test3" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
     <Setting Target="Host" Name="ArchiveIO">1</Setting>
-    <Setting Target="Adapter" Name="Credentials">suoperuser</Setting>
+    <Setting Target="Adapter" Name="Credentials">superuser</Setting>
     <Setting Target="Adapter" Name="HTTPPort">80</Setting>
     <Setting Target="Adapter" Name="HTTPServer">localhost</Setting>
     <Setting Target="Adapter" Name="URL">/csp/testns/fhir/r4/Bundle</Setting>
+    <Setting Target="Adapter" Name="SSLCheckServerIdentity">1</Setting>
   </Item>
   <Item Name="007_Verify thresholds for rejection" Category="Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router007</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
   <Item Name="007_DST_Hosp1" Category="Test5" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessClass">EnsLib.HL7.Operation.TCPOperation</Setting>
@@ -219,12 +226,12 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="IPAddress">172.20.20.5</Setting>
     <Setting Target="Adapter" Name="Port">22253</Setting>
   </Item>
-  <Item Name="INT_008" Category="Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_008" Category="Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
     <Setting Target="Adapter" Name="Port">5008</Setting>
     <Setting Target="Host" Name="TargetConfigNames">008_Route to destination endpoint</Setting>
   </Item>
-  <Item Name="INT_009" Category="Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="INT_009" Category="Test5" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
     <Setting Target="Adapter" Name="Port">5009</Setting>
     <Setting Target="Host" Name="TargetConfigNames">009_Route to destination endpoint</Setting>
@@ -243,9 +250,11 @@ XData ProductionDefinition
   </Item>
   <Item Name="008_Route to destination endpoint" Category="Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router008</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
   <Item Name="009_Route to destination endpoint" Category="Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Router009</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
   </Item>
 </Production>
 }

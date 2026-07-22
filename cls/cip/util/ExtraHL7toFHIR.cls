@@ -34,6 +34,10 @@ ClassMethod Patient(HL7MessageId As %String, ByRef target As %RegisteredObject, 
             do target.extension.Insert(extension)
             set index = target.extension.Count()+1 ; next available index
         }
+        if MsgObj.GetValueAt("PID:16") '= "" {
+            set maritalStatus = MsgObj.GetValueAt("PID:16.2")
+            set target.maritalStatus.text = maritalStatus
+        }
     }
     return $$$OK
 }

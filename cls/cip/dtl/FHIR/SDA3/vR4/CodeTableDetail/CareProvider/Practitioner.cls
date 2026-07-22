@@ -23,6 +23,13 @@ XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 
 For example:HL7MessageObjectId related information is not required, it should be removed.</annotation>
 </comment>
+<foreach property='target.identifier()' key='k1' >
+<if condition='target.identifier.(k1).value&apos;=""' >
+<true>
+<assign value='"http://hospital.example.org/provider-id"' property='target.identifier.(k1).system' action='set' />
+</true>
+</if>
+</foreach>
 </transform>
 }
 

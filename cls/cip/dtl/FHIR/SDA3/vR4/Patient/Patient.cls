@@ -50,7 +50,7 @@ For example:HL7MessageObjectId related information is not required, it should be
 <if condition='$isobject(source.Citizenship)' >
 <true>
 <assign value='##class(HS.FHIR.DTL.vR4.Model.Base.Extension).%New() ' property='tmp' action='set' />
-<assign value='"http://wahealth.com/fhir/StructureDefination/ResidencyStatus"' property='tmp.url' action='set' />
+<assign value='"http://nswdemo.com/fhir/StructureDefination/ResidencyStatus"' property='tmp.url' action='set' />
 <assign value='##class(HS.FHIR.DTL.vR4.Model.Datatype.Coding).%New()' property='valueCoding' action='set' />
 <assign value='source.Citizenship.Code' property='valueCoding.code' action='set' />
 <assign value='source.Citizenship.Description' property='valueCoding.display' action='set' />
@@ -73,7 +73,10 @@ For example:HL7MessageObjectId related information is not required, it should be
 </assign>
 </true>
 </if>
+<assign value='""' property='target.identifier.(ideKey).assigner' action='set' />
 </foreach>
+<assign value='""' property='target.managingOrganization' action='set' />
+<assign value='source.MaritalStatus.Description' property='target.maritalStatus.text' action='set' />
 <comment>
 <annotation>Convert the additional HL7 content that is not handled by the standard SDA-to-FHIR transformations.</annotation>
 </comment>

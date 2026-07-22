@@ -15,8 +15,12 @@ Property CustomSDAtoFHIRDTLPackage As %String;
 Method CreateAndSendFHIRMessage(pFHIRObj As %Library.DynamicObject, pSchema As HS.FHIRServer.Schema, pLocalHostAndPort As %String, pContentType As %String, pFormatter As %JSON.Formatter, pIndentChars As %String, pLineTerminator As %String, pSessionApplication As %String, pSessionId As %String)
 {
 	set tSC=..ConditionalUpdate(.pFHIRObj)
-	set tSC=..ConvertCollectionBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
-	do ..FHIRValidate(.pFHIRObj)
+	//set tSC=..ConvertCollectionBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
+	set tSC=..ConvertBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
+	set tSC=..FHIRValidate(.pFHIRObj)
+	if '$$$ISERR(tSC) {
+		$$$TRACE("FHIR Validation passed.")
+	}
 	set tSC=##super(pFHIRObj,pSchema,pLocalHostAndPort,pContentType,pFormatter,pIndentChars,pLineTerminator, pSessionApplication, pSessionId)
 	quit tSC
 }
@@ -26,8 +30,12 @@ Method CreateAndSendFHIRMessage(pFHIRObj As %Library.DynamicObject, pSchema As H
 Method CreateAndSendInteropMessage(pFHIRObj As %Library.DynamicObject, pSchema As HS.FHIRServer.Schema, pContentType As %String, pFormatter As %JSON.Formatter, pIndentChars As %String, pLineTerminator As %String, pSessionApplication As %String, pSessionId As %String)
 {
 	set tSC=..ConditionalUpdate(.pFHIRObj)
-	set tSC=..ConvertCollectionBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
-	do ..FHIRValidate(.pFHIRObj)
+	//set tSC=..ConvertCollectionBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
+	set tSC=..ConvertBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
+	set tSC=..FHIRValidate(.pFHIRObj)
+	if '$$$ISERR(tSC) {
+		$$$TRACE("FHIR Validation passed.")
+	}
 	set tSC=##super(pFHIRObj, pSchema, pContentType, pFormatter, pIndentChars, pLineTerminator, pSessionApplication, pSessionId)
 	quit tSC
 }
@@ -36,9 +44,8 @@ ClassMethod FHIRValidate(bundle As %Library.DynamicObject) As %Status
 {
 	; Validate that the CustomSDAtoFHIRDTLPackage is set and exists
 	set schema = ##class(HS.FHIRServer.Schema).LoadSchema("R4")
-	set resourceValidator = ##class(HS.FHIRServer.Util.ResourceValidator).%New(schema)
-	do resourceValidator.ValidateResource(bundle)
-	quit $$$OK
+	set resourceValidator = ##class(cip.util.ResourceValidator).%New(schema)
+	quit resourceValidator.ValidateResource(bundle)
 }
 
 ClassMethod ConvertCollectionBundle(bundle As %Library.DynamicObject, keepResourceList As %List) As %Status
@@ -55,6 +62,29 @@ ClassMethod ConvertCollectionBundle(bundle As %Library.DynamicObject, keepResour
 			}
 			else {
 				do bundle.entry.%Get(entry).%Remove("request")
+				set fullurl =  bundle.entry.%Get(entry).fullUrl
+				set bundle.entry.%Get(entry).fullUrl = "urn:uuid:"_fullurl
+			}
+		}
+	} catch ex {
+		set tSC=ex.AsStatus()
+	}
+
+	quit tSC
+}
+
+ClassMethod ConvertBundle(bundle As %Library.DynamicObject, keepResourceList As %List) As %Status
+{
+	set tSC=$$$OK
+	try { 
+        for entry=0:1:(bundle.entry.%Size()-1) {
+			set resource=bundle.entry.%Get(entry).resource
+            continue:'$IsObject(resource) 
+			if $listfind(keepResourceList, resource.resourceType) = 0 {
+				do bundle.entry.%Remove(entry)
+				set entry=entry-1
+			}
+			else {
 				set fullurl =  bundle.entry.%Get(entry).fullUrl
 				set bundle.entry.%Get(entry).fullUrl = "urn:uuid:"_fullurl
 			}

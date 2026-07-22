@@ -16,13 +16,14 @@ XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 <comment>
 <annotation>Apply native DTL as a subtransform</annotation>
 </comment>
-<subtransform class='HS.FHIR.DTL.SDA3.vR4.CodeTableDetail.FamilyDoctor.Practitioner' targetObj='target' sourceObj='source' aux='.aux' />
+<subtransform class='HS.FHIR.DTL.SDA3.vR4.CodeTableDetail.FamilyDoctor.Practitioner' targetObj='target' sourceObj='source' aux='.aux' disabled='1' />
 <comment>
 <annotation>1. Remove contained inline resources converted from SDA CustomPair.
 2. Override ##class(HS.FHIR.DTL.Util.SDA3.Handler.CustomPairs).Extension() when it&#39;s required, to only convert selected CustomPair.
 
 For example:HL7MessageObjectId related information is not required, it should be removed.</annotation>
 </comment>
+<assign value='""' property='target' action='set' />
 </transform>
 }
 

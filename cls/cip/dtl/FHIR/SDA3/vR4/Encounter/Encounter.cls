@@ -48,6 +48,8 @@ XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 <assign value='..classDisplay(target.class.code)' property='target.class.display' action='set' />
 </true>
 </if>
+<assign value='""' property='target.extension' action='set' />
+<assign value='""' property='target.serviceProvider' action='set' />
 <comment>
 <annotation>Convert the additional HL7 content that is not handled by the standard SDA-to-FHIR transformations.</annotation>
 </comment>

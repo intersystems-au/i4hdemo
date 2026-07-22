@@ -11,7 +11,7 @@ Parameter TREATEMPTYREPEATINGFIELDASNULL = 0;
 
 XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 {
-<transform sourceClass='EnsLib.HL7.Message' targetClass='EnsLib.HL7.Message' sourceDocType='NSWH_2.4:ADT_A01' targetDocType='2.3.1:ACK' create='new' language='objectscript' >
+<transform sourceClass='EnsLib.HL7.Message' targetClass='EnsLib.HL7.Message' sourceDocType='NSWH_2.4:ADT_A01' targetDocType='2.4:ACK' create='new' language='objectscript' >
 <annotation>Create custom &amp;#39;BadFacility&amp;#39; NACK</annotation>
 <assign value='"EnsembleHL7"' property='target.{MSH:SendingApplication.namespaceID}' action='set' />
 <assign value='source.{MSH:FieldSeparator}' property='target.{MSH:FieldSeparator}' action='set' />
@@ -26,7 +26,7 @@ XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 <assign value='"ISC"' property='target.{MSH:SendingFacility.namespaceID}' action='set' />
 <assign value='source.{MSH:SendingFacility}' property='target.{MSH:ReceivingFacility}' action='set' />
 <assign value='"AE"' property='target.{MSA:AcknowledgmentCode}' action='set' />
-<assign value='"Invalid Outpatient Location"' property='target.{MSA:MessageControlID}' action='set' />
+<assign value='"Invalid Source Outpatient Location(s)"' property='target.{MSA:MessageControlID}' action='set' />
 </transform>
 }
 

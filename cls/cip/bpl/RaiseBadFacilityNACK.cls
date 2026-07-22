@@ -24,20 +24,19 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 </parameters>
 </property>
 </context>
-<sequence xend='200' yend='750' >
+<sequence xend='200' yend='650' >
 <assign name="Set Bad Departments" property="context.InvalidDepartments " value="&quot;&quot;" action="set" xpos='200' ypos='250' />
 <assign name="Get Iterator Max" property="context.iterator" value="request.GetValueAt(&quot;PV1:AssignedPatientLocation(*)&quot;)" action="set" xpos='200' ypos='350' />
 <while name='Loop over Locations' condition='context.iterator&gt;0' xpos='200' ypos='450' xend='200' yend='800' >
 <assign name="Get one location" property="context.OneLocation" value="request.GetValueAt(&quot;PV1:AssignedPatientLocation(&quot;_context.iterator_&quot;)&quot;)" action="set" xpos='200' ypos='250' />
 <if name='Location Allowed ?' condition='##class(Ens.Util.FunctionSet).Lookup("AllowedDepartments",context.OneLocation,"")=""' xpos='200' ypos='350' xend='200' yend='600' >
 <true>
-<assign name="Append Bad Dept" property="context.InvalidDepartments" value="context.InvalidDepartments_request.GetValueAt(&quot;PV1:AssignedPatientLocation(&quot;_context.iterator_&quot;)&quot;)_&quot;,&quot; " action="set" xpos='335' ypos='500' />
+<assign name="Append Bad Dept" property="context.InvalidDepartments" value="context.InvalidDepartments_context.OneLocation_&quot;,&quot; " action="set" xpos='335' ypos='500' />
 </true>
 </if>
 <assign name="decrement counter" property="context.iterator" value="context.iterator-1" action="set" xpos='200' ypos='700' />
 </while>
-<trace name='trACE' value='context.InvalidDepartments' xpos='200' ypos='550' />
-<transform name='Construct Custom NACK' class='cip.dtl.NSWH.ADTA01.NAKBadFacility' source='request' target='response' xpos='200' ypos='650' />
+<transform name='Construct Custom NACK' class='cip.dtl.NSWH.ADTA01.NAKBadFacility' source='request' target='response' xpos='200' ypos='550' />
 </sequence>
 </process>
 }
