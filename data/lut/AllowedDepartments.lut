@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<lookupTable>
+<entry table="AllowedDepartments" key="SH-01">SH-01</entry>
+<entry table="AllowedDepartments" key="SH-02">SH-02</entry>
+<entry table="AllowedDepartments" key="SH-03">SH-03</entry>
+<entry table="AllowedDepartments" key="SH-04">SH-04</entry>
+<entry table="AllowedDepartments" key="SH-05">SH-05</entry>
+</lookupTable>
