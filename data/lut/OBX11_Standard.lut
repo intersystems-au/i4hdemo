@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<lookupTable>
+<entry table="OBX11_Standard" key="FINAL">F</entry>
+<entry table="OBX11_Standard" key="PEND">P</entry>
+</lookupTable>
