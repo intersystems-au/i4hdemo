@@ -8,8 +8,8 @@
 <item production="*" item="Test1_SH03" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22213"><Deployable>true</Deployable></item>
 <item production="*" item="Test2_Destination" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
 <item production="*" item="Test2_Destination" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22221"><Deployable>true</Deployable></item>
-<item production="*" item="Test3_SenderToFHIR" class="HS.FHIRServer.Interop.HTTPOperation" setting="HTTPPort" value="8091"><Deployable>true</Deployable></item>
 <item production="*" item="Test3_SenderToFHIR" class="HS.FHIRServer.Interop.HTTPOperation" setting="HTTPServer" value="ec2amaz-v0mshkd"><Deployable>true</Deployable></item>
+<item production="*" item="Test3_SenderToFHIR" class="HS.FHIRServer.Interop.HTTPOperation" setting="HTTPPort" value="8091"><Deployable>true</Deployable></item>
 <item production="*" item="Test3_SenderToFHIR" class="HS.FHIRServer.Interop.HTTPOperation" setting="URL" value="/FHIR-Server/"><Deployable>true</Deployable></item>
 <item production="*" item="Test4_Sender-1" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
 <item production="*" item="Test4_Sender-1" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22241"><Deployable>true</Deployable></item>

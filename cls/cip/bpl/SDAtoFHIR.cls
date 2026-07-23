@@ -17,6 +17,7 @@ Method CreateAndSendFHIRMessage(pFHIRObj As %Library.DynamicObject, pSchema As H
 	set tSC=..ConditionalUpdate(.pFHIRObj)
 	//set tSC=..ConvertCollectionBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
 	set tSC=..ConvertBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
+	set tSC=..ConvertBundleToPOST(.pFHIRObj)
 	set tSC=..FHIRValidate(.pFHIRObj)
 	if '$$$ISERR(tSC) {
 		$$$TRACE("FHIR Validation passed.")
@@ -32,6 +33,7 @@ Method CreateAndSendInteropMessage(pFHIRObj As %Library.DynamicObject, pSchema A
 	set tSC=..ConditionalUpdate(.pFHIRObj)
 	//set tSC=..ConvertCollectionBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
 	set tSC=..ConvertBundle(.pFHIRObj, $LISTBUILD("Patient","Practitioner","Encounter"))
+	set tSC=..ConvertBundleToPOST(.pFHIRObj)
 	set tSC=..FHIRValidate(.pFHIRObj)
 	if '$$$ISERR(tSC) {
 		$$$TRACE("FHIR Validation passed.")
@@ -46,6 +48,26 @@ ClassMethod FHIRValidate(bundle As %Library.DynamicObject) As %Status
 	set schema = ##class(HS.FHIRServer.Schema).LoadSchema("R4")
 	set resourceValidator = ##class(cip.util.ResourceValidator).%New(schema)
 	quit resourceValidator.ValidateResource(bundle)
+}
+
+ClassMethod ConvertBundleToPOST(bundle As %Library.DynamicObject) As %Status
+{
+	set tSC=$$$OK
+	try { 
+		for entry=0:1:(bundle.entry.%Size()-1) {
+			set resource=bundle.entry.%Get(entry).resource
+			continue:'$IsObject(resource) 
+			set request=bundle.entry.%Get(entry).request
+			if request.method="PUT" {
+				set request.method="POST"
+				set request.url=resource.resourceType
+			}
+		}
+	} catch ex {
+		set tSC=ex.AsStatus()
+	}
+
+	quit tSC
 }
 
 ClassMethod ConvertCollectionBundle(bundle As %Library.DynamicObject, keepResourceList As %List) As %Status
