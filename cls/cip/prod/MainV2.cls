@@ -150,7 +150,7 @@ XData ProductionDefinition
     <Setting Target="Host" Name="DocTypeResolution">Std</Setting>
   </Item>
   <Item Name="Test 5" Category="Version2," ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="TargetConfigNames">Test5_Router_WIP</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">Test5_Router</Setting>
     <Setting Target="Host" Name="AckMode">App</Setting>
     <Setting Target="Adapter" Name="Port">5005</Setting>
     <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
@@ -170,13 +170,6 @@ XData ProductionDefinition
     <Setting Target="Host" Name="RuleLogging">a</Setting>
   </Item>
   <Item Name="Test4_SmartDistribution" Category="Version2,Test4" ClassName="cip.bpl.Test4SmartDistribution" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-  </Item>
-  <Item Name="Test5_Router_WIP" Category="Version2,Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
-    <Setting Target="Host" Name="Validation">dm-z</Setting>
-    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Test5Router</Setting>
-    <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
-    <Setting Target="Host" Name="AlertOnError">1</Setting>
-    <Setting Target="Host" Name="RuleLogging">a</Setting>
   </Item>
   <Item Name="Test4_Sender-2" Category="Version2,Test4" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="IPAddress">172.20.20.5</Setting>
@@ -218,8 +211,8 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="Framing">MLLP</Setting>
   </Item>
   <Item Name="Test2_Destination" Category="Version2,Test2" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="Shared outbound for INT-004 and INT-005 (masked ADT^A01 v2.4 / converted ADT^A01 v2.3.1)" LogTraceEvents="false" Schedule="">
-    <Setting Target="Adapter" Name="IPAddress"></Setting>
-    <Setting Target="Adapter" Name="Port"></Setting>
+    <Setting Target="Adapter" Name="IPAddress">172.20.20.5</Setting>
+    <Setting Target="Adapter" Name="Port">22221</Setting>
     <Setting Target="Adapter" Name="Framing">MLLP</Setting>
   </Item>
   <Item Name="Test3_HL7toSDA" Category="Test3" ClassName="cip.bpl.TransformHL7toSDA" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
@@ -255,6 +248,15 @@ XData ProductionDefinition
   <Item Name="Ens.Activity.Operation.Local" Category="" ClassName="Ens.Activity.Operation.Local" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="Test4_RejectBadDept_BPL" Category="Version2,Test4" ClassName="cip.bpl.RaiseBadFacilityNACK" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+  </Item>
+  <Item Name="Test5_Router" Category="Version2,Test5" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="BusinessRuleName">cip.rul.Test5Router</Setting>
+    <Setting Target="Host" Name="BadMessageHandler">Test5_DeadLetterQueue</Setting>
+    <Setting Target="Host" Name="AlertOnError">1</Setting>
+    <Setting Target="Host" Name="RuleLogging">a</Setting>
+  </Item>
+  <Item Name="Test5_DeadLetterQueue" Category="Test5" ClassName="cip.bo.DeadLetterQueue" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
 </Production>
 }
