@@ -3,6 +3,11 @@ Class cip.util.TransformSDA3ToFHIR Extends HS.FHIR.DTL.Util.API.Transform.SDA3To
 
 Method GetId(source As HS.SDA3.SuperClass, resource As %DynamicObject) As %String
 {
+    quit $ZCONVERT(resource.resourceType,"L")_"-"_$increment(^NSWHFHIRIDIndex(resource.resourceType))
+}
+
+Method GetIdx(source As HS.SDA3.SuperClass, resource As %DynamicObject) As %String
+{
     //set useIDMapping = 0
     set (id,identifier) = ""
     if $LISTFIND($LISTBUILD("Patient", "Practitioner", "Encounter"),resource.resourceType) > 0{
@@ -25,7 +30,7 @@ Method GetId(source As HS.SDA3.SuperClass, resource As %DynamicObject) As %Strin
         if ('exist) && (id'= "") {
             set st =  ##class(cip.util.IDMap).AddId(resource.resourceType, identifier, id)
         }
-        set id = resource.resourceType_"-"_id
+        set id = $ZCONVERT(resource.resourceType,"L")_"-"_id
     }
 
 	return id

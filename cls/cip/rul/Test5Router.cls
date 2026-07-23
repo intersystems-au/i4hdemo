@@ -12,7 +12,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <constraint name="source" value="Test 5"></constraint>
 <constraint name="docCategory" value="NSWH_2.4"></constraint>
 <constraint name="docName" value="ORM_O01,ORU_R01"></constraint>
-<when condition="1" comment="">
+<when condition="GetAttachmentSize(HL7)&gt;50" comment="">
 <comment text="NOTE: The logic for the threshold is still to be confirmed by NSW Health"></comment>
 <send transform="" target="Ens.Alert,Test5_DeadLetterQueue"></send>
 <return></return>
@@ -62,15 +62,15 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <constraint name="source" value="Test 5"></constraint>
 <constraint name="docCategory" value="NSWH_2.4"></constraint>
 <constraint name="docName" value="ADT_A01"></constraint>
-<when condition="HL7.{PV1:AssignedPatientLocation.facilityHD.namespaceID}=&quot;SH-1&quot;" comment="">
+<when condition="HL7.{PV1:AssignedPatientLocation.facilityHD.namespaceID}=&quot;SH-01&quot;" comment="">
 <send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="Test5_Sender-1"></send>
 <return></return>
 </when>
-<when condition="HL7.{PV1:AssignedPatientLocation.facilityHD.namespaceID}=&quot;SH-2&quot;" comment="">
+<when condition="HL7.{PV1:AssignedPatientLocation.facilityHD.namespaceID}=&quot;SH-02&quot;" comment="">
 <send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="Test5_Sender-2"></send>
 <return></return>
 </when>
-<when condition="HL7.{PV1:AssignedPatientLocation.facilityHD.namespaceID}=&quot;SH-3&quot;" comment="">
+<when condition="HL7.{PV1:AssignedPatientLocation.facilityHD.namespaceID}=&quot;SH-03&quot;" comment="">
 <send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="Test5_Sender-3"></send>
 <return></return>
 </when>

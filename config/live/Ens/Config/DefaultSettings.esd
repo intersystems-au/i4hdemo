@@ -1,5 +1,5 @@
-<?xml version="1.0"?>^M
-<defaultSettings>^M
+<?xml version="1.0"?>
+<defaultSettings>
 <item production="*" item="Test1_SH01" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
 <item production="*" item="Test1_SH01" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22211"><Deployable>true</Deployable></item>
 <item production="*" item="Test1_SH02" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
