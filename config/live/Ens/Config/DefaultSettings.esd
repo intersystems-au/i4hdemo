@@ -1,0 +1,26 @@
+<?xml version="1.0"?>^M
+<defaultSettings>^M
+<item production="*" item="Test1_SH01" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test1_SH01" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22211"><Deployable>true</Deployable></item>
+<item production="*" item="Test1_SH02" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test1_SH02" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22212"><Deployable>true</Deployable></item>
+<item production="*" item="Test1_SH03" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test1_SH03" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22213"><Deployable>true</Deployable></item>
+<item production="*" item="Test2_Destination" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test2_Destination" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22221"><Deployable>true</Deployable></item>
+<item production="*" item="Test3_SenderToFHIR" class="HS.FHIRServer.Interop.HTTPOperation" setting="HTTPServer" value="ec2amaz-v0mshkd"><Deployable>true</Deployable></item>
+<item production="*" item="Test3_SenderToFHIR" class="HS.FHIRServer.Interop.HTTPOperation" setting="HTTPPort" value="8091"><Deployable>true</Deployable></item>
+<item production="*" item="Test3_SenderToFHIR" class="HS.FHIRServer.Interop.HTTPOperation" setting="URL" value="/FHIR-Server/"><Deployable>true</Deployable></item>
+<item production="*" item="Test4_Sender-1" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test4_Sender-1" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22241"><Deployable>true</Deployable></item>
+<item production="*" item="Test4_Sender-2" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test4_Sender-2" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22242"><Deployable>true</Deployable></item>
+<item production="*" item="Test4_Sender-3" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test4_Sender-3" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22243"><Deployable>true</Deployable></item>
+<item production="*" item="Test5_Sender-1" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test5_Sender-1" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22251"><Deployable>true</Deployable></item>
+<item production="*" item="Test5_Sender-2" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test5_Sender-2" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22252"><Deployable>true</Deployable></item>
+<item production="*" item="Test5_Sender-3" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
+<item production="*" item="Test5_Sender-3" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22253"><Deployable>true</Deployable></item>
+</defaultSettings>
