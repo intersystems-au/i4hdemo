@@ -18,19 +18,23 @@ ClassMethod GetAttachmentSize(hl7Message) As %Integer
 {
     set size=0
 
-    set maxOBX=hl7.GetValueAt("PIDgrpgrp(1).ORCgrp(1).OBXgrp(*)")
-    /*
+    set maxOBX=hl7Message.GetValueAt("PIDgrpgrp(1).ORCgrp(1).OBXgrp(*)")
+    set attachmentStream = ##class(%Stream.GlobalCharacter).%New()
+    
     for i=1:1:maxOBX {
         
-        if obxType = "ED" {
+        if hl7Message.GetValueAt("PIDgrpgrp(1).ORCgrp(1).OBXgrp("_i_").OBX:ValueType") = "ED" {
+            set base64Chunk = hl7Message.GetValueAt("PIDgrpgrp(1).ORCgrp(1).OBXgrp("_i_").OBX:ObservationValue")
             
-            set base64Chunk = hl7.GetValueAt("PIDgrpgrp(1).ORCgrp(1).OBXgrp(i).OBX:ObservationValue")
-        
-            set attachmentSize = hl7.GetValueAt("OBX("_i_").observationValue(1).size")
-            set size = size + attachmentSize
+            Do attachmentStream.Write(base64Chunk)
+    
         }
     }
-    */
+
+    do attachmentStream.Rewind()
+
+    // Convert unit from bytes to MB
+    set size = attachmentStream.Size/(1024*1024)
 
     // Quit with the total size of attachments in OBX segments
     return size
