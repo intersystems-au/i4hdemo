@@ -6,7 +6,7 @@ Parameter RuleAssistClass = "EnsLib.HL7.MsgRouter.RuleAssist";
 
 XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 {
-<ruleDefinition alias="" context="EnsLib.HL7.MsgRouter.RoutingEngine" production="cip.prod.MainV2">
+<ruleDefinition alias="" context="EnsLib.HL7.MsgRouter.RoutingEngine" production="cip.prod.Main">
 <ruleSet name="Filter non ADT messages" effectiveBegin="" effectiveEnd="">
 <rule name="Accept ADT 2.3.1" disabled="false">
 <constraint name="docCategory" value="NSWH_2.3.1"></constraint>
