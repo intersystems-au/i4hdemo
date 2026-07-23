@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<lookupTable>
+<entry table="OBX8_Standard" key="High">H</entry>
+<entry table="OBX8_Standard" key="Low">L</entry>
+<entry table="OBX8_Standard" key="Normal">N</entry>
+</lookupTable>
