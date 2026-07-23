@@ -47,9 +47,19 @@ ClassMethod Encounter(HL7MessageId As %String, ByRef target As %RegisteredObject
     set MsgObj = ##class(EnsLib.HL7.Message).%OpenId(HL7MessageId)
     if MsgObj  {
         // Example: Add a custom extension for Encounter resource if needed
-        if MsgObj.GetValueAt("MSH:9.1")_"^"_ MsgObj.GetValueAt("MSH:9.2")= "ADT^A01" {
+        set DocType = MsgObj.GetValueAt("MSH:9.1")_"^"_ MsgObj.GetValueAt("MSH:9.2")
+        if (DocType = "ADT^A01")||(DocType = "ADT^A02")||(DocType = "ADT^A13"){
             set target.status = "in-progress"
+        } elseif (DocType = "ADT^A04")||(DocType = "ADT^A05"){
+            set target.status = "planned"
+        } elseif DocType = "ADT^A03" {
+            set target.status = "finished"
+        } elseif DocType = "ADT^A08" {
+            set target.status = "unknown"
+        } elseif DocType = "ADT^A011" {
+            set target.status = "cancelled"
         }
+        
         if MsgObj.GetValueAt("PV1:3")'="" {
             set target.location = ""
             set tmp = ##class(HS.FHIR.DTL.vR4.Model.Element.Encounter.location).%New()
