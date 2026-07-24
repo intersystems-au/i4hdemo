@@ -19,6 +19,7 @@ XData ProductionDefinition
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
     <Setting Target="Host" Name="ResponseFrom">Sender-1,Sender-2,Sender-3,Test4_RejectBadDept_BPL</Setting>
     <Setting Target="Host" Name="AlertOnError">1</Setting>
+    <Setting Target="Host" Name="Validation">dmr-z</Setting>
   </Item>
   <Item Name="Test 4" Category="Version2,Test4" ClassName="EnsLib.HL7.Service.TCPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="TargetConfigNames">Test4_Router</Setting>
