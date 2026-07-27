@@ -1,7 +1,8 @@
 Class UnitTest.TestProduction Extends %UnitTest.TestProduction
 {
+
 /// Production to test.
-Parameter PRODUCTION = "IRISAPPPKG.FoundationProduction";
+Parameter PRODUCTION = "cip.prod.Main";
 
 /// Code to run right before the production is started.  This is useful to:<br>
 /// <ul><li>Adjust settings - see method <method>ChangeSetting</method>.</li>
