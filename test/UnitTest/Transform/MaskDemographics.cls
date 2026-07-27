@@ -1,4 +1,4 @@
-Class UnitTest.dtl.NSWH.ADTA01.NSWH.ADTA01.MaskPID Extends %UnitTest.TestCase
+Class UnitTest.Transform.MaskDemographics Extends %UnitTest.TestCase
 {
 
 /// Test masking in 1st name provided and Patient IDs (2).
