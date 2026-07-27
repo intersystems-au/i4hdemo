@@ -41,8 +41,9 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 <assign name="Resolve Target" property="context.TargetOutboundInterface" value="&quot;Test4_Sender-&quot;_+$piece(context.SendingFacility,&quot;-&quot;,2)" action="set" xpos='200' ypos='700' >
 <annotation><![CDATA[Resolve target as "Test4_Sender-" Facility number  (eg resolve 'SH-01' to 'Sender-1')]]></annotation>
 </assign>
+<trace name='Trace' value='"Sending to: "_context.TargetOutboundInterface' xpos='1261' ypos='464' />
 <scope name='Try Sender Interface out' xpos='200' ypos='800' xend='200' yend='1150' >
-<call name='Distribute' target='@context.TargetOutboundInterface' async='1' xpos='200' ypos='900' >
+<call name='Distribute' target='@context.TargetOutboundInterface' async='0' xpos='200' ypos='900' >
 <annotation><![CDATA[distribute to Resolved Target host]]></annotation>
 <request type='EnsLib.HL7.Message' >
 <assign property="callrequest" value="request" action="set" />
