@@ -15,6 +15,13 @@ Parameter PRODUCTION = "cip.prod.Main";
 Method OnBeforeProductionStart() As %Status
 {
     ; Clear target output directory for FILE outbound adapters
+
+	; Disable inbound connection not receiving messages in this environment
+	do ##class(Ens.Director).EnableConfigItem("Test1",0,1)
+	do ##class(Ens.Director).EnableConfigItem("Test2",0,1)
+	do ##class(Ens.Director).EnableConfigItem("Test3",0,1)
+	do ##class(Ens.Director).EnableConfigItem("Test4",0,1)
+	do ##class(Ens.Director).EnableConfigItem("Test5",0,1)
 	Quit $$$OK
 }
 
