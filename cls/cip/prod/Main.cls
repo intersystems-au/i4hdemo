@@ -109,10 +109,6 @@ XData ProductionDefinition
   <Item Name="Test3_SendToFHIR" Category="Test3" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="ArchiveIO">1</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
-    <Setting Target="Adapter" Name="Credentials"></Setting>
-    <Setting Target="Adapter" Name="HTTPPort"></Setting>
-    <Setting Target="Adapter" Name="HTTPServer"></Setting>
-    <Setting Target="Adapter" Name="URL"></Setting>
   </Item>
   <Item Name="Test3_Router" Category="Version2,Test3" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="Validation">dm-z</Setting>
