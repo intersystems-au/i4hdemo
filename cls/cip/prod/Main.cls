@@ -78,6 +78,7 @@ XData ProductionDefinition
   <Item Name="Test5_Sender-2" Category="Version2,Test5" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="Test5_Sender-3" Category="Version2,Test5" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="ArchiveIO">0</Setting>
   </Item>
   <Item Name="Test1_SH01" Category="Version2,Test1" ClassName="EnsLib.HL7.Operation.TCPOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="INT-002 destination for MSH-4=SH-01" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="Framing">MLLP</Setting>
@@ -108,10 +109,10 @@ XData ProductionDefinition
   <Item Name="Test3_SendToFHIR" Category="Test3" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="ArchiveIO">1</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
-    <Setting Target="Adapter" Name="Credentials">superuser</Setting>
-    <Setting Target="Adapter" Name="HTTPPort">80</Setting>
-    <Setting Target="Adapter" Name="HTTPServer">localhost</Setting>
-    <Setting Target="Adapter" Name="URL">/csp/testns/fhir/r4</Setting>
+    <Setting Target="Adapter" Name="Credentials"></Setting>
+    <Setting Target="Adapter" Name="HTTPPort"></Setting>
+    <Setting Target="Adapter" Name="HTTPServer"></Setting>
+    <Setting Target="Adapter" Name="URL"></Setting>
   </Item>
   <Item Name="Test3_Router" Category="Version2,Test3" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="Validation">dm-z</Setting>
