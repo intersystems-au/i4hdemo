@@ -1,4 +1,4 @@
-Class UnitTest.TestProduction Extends %UnitTest.TestProduction
+Class UnitTest.Production Extends %UnitTest.TestProduction
 {
 
 /// Production to test.
