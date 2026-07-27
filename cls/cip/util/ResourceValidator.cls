@@ -17,16 +17,16 @@ Method ValidateResource(pResourceObject As %DynamicObject, pIsInTransaction As %
 
 	Set resourceType = pResourceObject.resourceType
 	
-	If (resourceType="") || '$$$IsValidResourceType(..metaAPI, resourceType) {
+	if (resourceType="") || '..metaAPI.IsValidResourceType(resourceType) {
 		$$$ThrowFHIR($$$ERROR($$$HSFHIRErrResourceTypeUnknown, resourceType))
 	}
-	Set tSC = ..ValidateObject(pResourceObject, resourceType, resourceType, pIsInTransaction)
+	Set tSC = ..ValidateObject(pResourceObject, resourceType, resourceType, $$$OK, pIsInTransaction)
 	If ($$$ISERR(tSC)) {
-		Set rootsc = $$$ERROR($$$HSFHIRErrValidationFailure, $$$OutcomeIs($$$HTTP400, "error", "invalid"))
+		Set rootsc = $$$ERROR($$$HSFHIRErrValidationFailure, $$$OutcomeIs(400, "error", "invalid"))
 		$$$FHIRAddError(rootsc, tSC)
 		$$$ThrowStatus(rootsc)
 	}
-    quit tSC
+	quit tSC
 }
 
 }
