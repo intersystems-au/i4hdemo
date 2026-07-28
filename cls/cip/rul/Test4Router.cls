@@ -10,7 +10,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <ruleSet name="" effectiveBegin="" effectiveEnd="">
 <rule name="Skip Outpatient Encounters from invalid Department, or forward ADT">
 <constraint name="docCategory" value="NSWH_2.4"></constraint>
-<constraint name="docName" value="ADT_A01"></constraint>
+<constraint name="docName" value="ADT_A01,ADT_A04,ADT_A08"></constraint>
 <when condition="HL7.{PV1:PatientClass}=&quot;O&quot;&amp;&amp;((IncludesInvalidDepartmentSource(HL7)=1))" comment="">
 <send transform="" target="Test4_RejectBadDept_BPL"></send>
 <return></return>
