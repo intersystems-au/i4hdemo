@@ -23,9 +23,9 @@
 <item production="*" item="Test5_Sender-2" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22252"><Deployable>true</Deployable></item>
 <item production="*" item="Test5_Sender-3" class="EnsLib.HL7.Operation.TCPOperation" setting="IPAddress" value="172.20.20.5"><Deployable>true</Deployable></item>
 <item production="*" item="Test5_Sender-3" class="EnsLib.HL7.Operation.TCPOperation" setting="Port" value="22253"><Deployable>true</Deployable></item>
-<item production="*" item="Test 1" class="EnsLib.HL7.Service.TCPService" setting="Enabled" value="0"><Deployable>true</Deployable></item>
-<item production="*" item="Test 2" class="EnsLib.HL7.Service.TCPService" setting="Enabled" value="0"><Deployable>true</Deployable></item>
-<item production="*" item="Test 3" class="EnsLib.HL7.Service.TCPService" setting="Enabled" value="0"><Deployable>true</Deployable></item>
-<item production="*" item="Test 4" class="EnsLib.HL7.Service.TCPService" setting="Enabled" value="0"><Deployable>true</Deployable></item>
-<item production="*" item="Test 5" class="EnsLib.HL7.Service.TCPService" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test 1" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test 2" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test 3" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test 4" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test 5" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
 </defaultSettings>
