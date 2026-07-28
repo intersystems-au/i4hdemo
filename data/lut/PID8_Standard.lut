@@ -3,4 +3,5 @@
 <entry table="PID8_Standard" key="Female">F</entry>
 <entry table="PID8_Standard" key="Male">M</entry>
 <entry table="PID8_Standard" key="Other">O</entry>
+<entry table="PID8_Standard" key="Unknown">U</entry>
 </lookupTable>
