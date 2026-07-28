@@ -39,7 +39,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <rule name="Process ADT with Gender Specified with non-standard value" disabled="false">
 <constraint name="source" value="Test 5"></constraint>
 <constraint name="docCategory" value="NSWH_2.4"></constraint>
-<constraint name="docName" value="ADT_A01"></constraint>
+<constraint name="docName" value="ADT_A01,ADT_A04,ADT_A08"></constraint>
 <when condition="1" comment="">
 <send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.GenderStandardValues" target="Test5_Sender-1,Test5_Sender-2,Test5_Sender-3"></send>
 <return></return>
