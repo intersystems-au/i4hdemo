@@ -26,8 +26,10 @@ Method TestMaskDemographics()
     do $$$AssertTrue(target.GetValueAt("PID:Sex")="XXXX")
     
     // Check values masked Family Name
-    do $$$AssertTrue(target.GetValueAt("PID:PatientIdentifierList(1).ID")="XXXX")
-    do $$$AssertTrue(target.GetValueAt("PID:PatientIdentifierList(2).ID")="XXXX")
+    do $$$AssertTrue(target.GetValueAt("PID:PatientIdentifierList().ID")="XXXX")
+    
+    // Check values masked Home Phone Number
+    ;do $$$AssertTrue(target.GetValueAt("PID:PhoneNumberHome()")="XXXX")
 }
 
 XData ADTA01 [ MimeType = application/test ]
