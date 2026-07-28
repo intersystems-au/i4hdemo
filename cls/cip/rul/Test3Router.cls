@@ -18,7 +18,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 </rule>
 <rule name="Accept ADT 2.4" disabled="false">
 <constraint name="docCategory" value="NSWH_2.4"></constraint>
-<constraint name="docName" value="ADT_A01"></constraint>
+<constraint name="docName" value="ADT_A01,ADT_A04,ADT_A08"></constraint>
 <when condition="1" comment="">
 <send transform="cip.dtl.NSWH.v24.ADTA01.NSWH.v251.ADTA01" target="Test3_HL7toSDA"></send>
 <return></return>
