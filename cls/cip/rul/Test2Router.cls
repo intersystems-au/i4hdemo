@@ -10,7 +10,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <ruleSet name="" effectiveBegin="" effectiveEnd="">
 <rule name="Version conversion and Transformation Patient Attributes">
 <constraint name="docCategory" value="NSWH_2.4"></constraint>
-<constraint name="docName" value="ADT_A01"></constraint>
+<constraint name="docName" value="ADT_A01,ADT_A04,ADT_A08"></constraint>
 <when condition="1" comment="">
 <send transform="cip.dtl.NSWH.ADTA01.NSWH.ADTA01.Version24to23,cip.dtl.NSWH.ADTA01.NSWH.ADTA01.MaskPID" target="Test2_Destination"></send>
 <return></return>
