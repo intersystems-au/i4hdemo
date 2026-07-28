@@ -5,7 +5,7 @@ XData ProductionDefinition
 {
 <Production Name="cip.prod.Main" TestingEnabled="true" LogGeneralTraceEvents="false">
   <Description></Description>
-  <ActorPoolSize>2</ActorPoolSize>
+  <ActorPoolSize>3</ActorPoolSize>
   <Item Name="BadMessageHandler" Category="Version2,Test1,Test2,Test3,Test4,Test5" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="Bad messages are sent to this operation." LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="FilePath">/tmp</Setting>
   </Item>
@@ -109,10 +109,6 @@ XData ProductionDefinition
   <Item Name="Test3_SendToFHIR" Category="Test3" ClassName="HS.FHIRServer.Interop.HTTPOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="ArchiveIO">1</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
-    <Setting Target="Adapter" Name="Credentials"></Setting>
-    <Setting Target="Adapter" Name="HTTPPort"></Setting>
-    <Setting Target="Adapter" Name="HTTPServer"></Setting>
-    <Setting Target="Adapter" Name="URL"></Setting>
   </Item>
   <Item Name="Test3_Router" Category="Version2,Test3" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="Validation">dm-z</Setting>
