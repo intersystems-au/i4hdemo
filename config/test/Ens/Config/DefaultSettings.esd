@@ -28,6 +28,9 @@
 <item production="cip.prod.Main" item="Test 3" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
 <item production="cip.prod.Main" item="Test 4" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
 <item production="cip.prod.Main" item="Test 5" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test1_SH01" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test1_SH02" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
+<item production="cip.prod.Main" item="Test1_SH03" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
 <item production="cip.prod.Main" item="Test2_Destination" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
 <item production="cip.prod.Main" item="Test3_SenderToFHIR" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
 <item production="cip.prod.Main" item="Test4_Sender-1" class="*" setting="Enabled" value="0"><Deployable>true</Deployable></item>
