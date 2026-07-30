@@ -23,7 +23,7 @@ Method TestMaskDemographics()
     do $$$AssertTrue(target.GetValueAt("3:7.1")="XXXX")
 
     // Check values masked Family Gender
-    do $$$AssertTrue(target.GetValueAt("3.8")="XXXX")
+    do $$$AssertTrue(target.GetValueAt("3:8")="XXXX")
     
     // Check values masked PatientID
     do $$$AssertTrue(target.GetValueAt("3:2.1")="XXXX")
