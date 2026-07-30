@@ -11,13 +11,13 @@ Parameter TREATEMPTYREPEATINGFIELDASNULL = 0;
 
 XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 {
-<transform sourceClass='EnsLib.HL7.Message' targetClass='EnsLib.HL7.Message' create='copy' language='objectscript' >
-<assign value='"XXXX"' property='target.{3:5().1}' action='set' />
-<assign value='"XXXX"' property='target.{3:5().2}' action='set' />
-<assign value='"XXXX"' property='target.{3:7.1}' action='set' />
-<assign value='"XXXX"' property='target.{3:8}' action='set' />
-<assign value='"XXXX"' property='target.{3:2.1}' action='set' />
-<assign value='"XXXX"' property='target.{3:3().1}' action='set' />
+<transform sourceClass='EnsLib.HL7.Message' targetClass='EnsLib.HL7.Message' sourceDocType='NSWH_2.3:ADT_A01' targetDocType='NSWH_2.3:ADT_A01' create='copy' language='objectscript' >
+<assign value='"XXXX"' property='target.{PID:PatientName.givenname}' action='set' />
+<assign value='"XXXX"' property='target.{PID:PatientName.familyname}' action='set' />
+<assign value='"XXXX"' property='target.{PID:DateofBirth.timeofanevent}' action='set' />
+<assign value='"XXXX"' property='target.{PID:Sex}' action='set' />
+<assign value='"XXXX"' property='target.{PID:PatientIDExternalID.ID}' action='set' />
+<assign value='"XXXX"' property='target.{PID:PatientIDInternalID().ID}' action='set' />
 </transform>
 }
 
