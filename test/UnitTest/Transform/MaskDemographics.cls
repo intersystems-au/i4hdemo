@@ -14,19 +14,22 @@ Method TestMaskDemographics()
     do $$$AssertStatusOK(##class(cip.dtl.NSWH.ADTA01.NSWH.ADTA01.MaskPID).Transform(hl7,.target),"Test Masking of demographic fields in PID.")
 
     // Check values masked Family Names
-    do $$$AssertTrue(target.GetValueAt("PID:PatientName(1).familylastname.familyname")="XXXX")
+    do $$$AssertTrue(target.GetValueAt("3:5().1")="XXXX")
 
     // Check values masked Given Name
-    do $$$AssertTrue(target.GetValueAt("PID:PatientName(1).givenname")="XXXX")
+    do $$$AssertTrue(target.GetValueAt("3:5().2")="XXXX")
 
     // Check values masked DOB
-    do $$$AssertTrue(target.GetValueAt("PID:DateTimeOfBirth.timeofanevent")="XXXX")
+    do $$$AssertTrue(target.GetValueAt("3:7.1")="XXXX")
 
     // Check values masked Family Gender
-    do $$$AssertTrue(target.GetValueAt("PID:Sex")="XXXX")
+    do $$$AssertTrue(target.GetValueAt("3.8")="XXXX")
     
-    // Check values masked Family Name
-    do $$$AssertTrue(target.GetValueAt("PID:PatientIdentifierList().ID")="XXXX")
+    // Check values masked PatientID
+    do $$$AssertTrue(target.GetValueAt("3:2.1")="XXXX")
+    
+    // Check values masked Patient Identifier List
+    do $$$AssertTrue(target.GetValueAt("3:3().1")="XXXX")
     
     // Check values masked Home Phone Number
     ;do $$$AssertTrue(target.GetValueAt("PID:PhoneNumberHome()")="XXXX")
