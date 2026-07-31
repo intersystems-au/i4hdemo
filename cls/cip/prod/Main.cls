@@ -52,14 +52,14 @@ XData ProductionDefinition
     <Setting Target="Host" Name="MessageSchemaCategory">NSWH_2.4</Setting>
   </Item>
   <Item Name="Test2_Router" Category="Version2,Test2" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
-    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="Validation">d-m-z</Setting>
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Test2Router</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
     <Setting Target="Host" Name="AlertOnError">1</Setting>
     <Setting Target="Host" Name="RuleLogging">a</Setting>
   </Item>
   <Item Name="Test1_Router" Category="Version2,Test1" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="Applies INT-002 route by MSH-4 to one of 3 destinations" LogTraceEvents="true" Schedule="">
-    <Setting Target="Host" Name="Validation">dm-z</Setting>
+    <Setting Target="Host" Name="Validation">d-m-z</Setting>
     <Setting Target="Host" Name="BusinessRuleName">cip.rul.Test1Router</Setting>
     <Setting Target="Host" Name="BadMessageHandler">BadMessageHandler</Setting>
     <Setting Target="Host" Name="AlertOnError">1</Setting>
