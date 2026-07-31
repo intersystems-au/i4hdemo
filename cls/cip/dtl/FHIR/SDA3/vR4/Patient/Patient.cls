@@ -76,7 +76,11 @@ For example:HL7MessageObjectId related information is not required, it should be
 <assign value='""' property='target.identifier.(ideKey).assigner' action='set' />
 </foreach>
 <assign value='""' property='target.managingOrganization' action='set' />
+<if condition='source.MaritalStatus.Description&apos;=""' >
+<true>
 <assign value='source.MaritalStatus.Description' property='target.maritalStatus.text' action='set' />
+</true>
+</if>
 <comment>
 <annotation>Convert the additional HL7 content that is not handled by the standard SDA-to-FHIR transformations.</annotation>
 </comment>
