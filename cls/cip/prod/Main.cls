@@ -110,7 +110,7 @@ XData ProductionDefinition
     <Setting Target="Host" Name="ArchiveIO">1</Setting>
     <Setting Target="Host" Name="TraceOperations">*FULL*</Setting>
     <Setting Target="Adapter" Name="HTTPServer">172.20.20.5</Setting>
-    <Setting Target="Adapter" Name="URL">/FHIR-Server</Setting>
+    <Setting Target="Adapter" Name="URL">/FHIR-Server/</Setting>
     <Setting Target="Adapter" Name="HTTPPort">8091</Setting>
   </Item>
   <Item Name="Test3_Router" Category="Version2,Test3" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
