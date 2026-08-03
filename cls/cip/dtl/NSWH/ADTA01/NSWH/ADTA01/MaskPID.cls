@@ -18,7 +18,6 @@ XData DTL [ XMLNamespace = "http://www.intersystems.com/dtl" ]
 <assign value='"XXXX"' property='target.{PID:Sex}' action='set' />
 <assign value='"XXXX"' property='target.{PID:PatientIDExternalID.ID}' action='set' />
 <assign value='"XXXX"' property='target.{PID:PatientIDInternalID().ID}' action='set' />
-<assign value='"XXXX"' property='target.{PID:PhoneNumberHome()}' action='set' />
 </transform>
 }
 
