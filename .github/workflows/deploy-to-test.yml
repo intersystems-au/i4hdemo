@@ -12,7 +12,7 @@ jobs:
       matrix:
         include:
           - servertag: test 
-            runner: [self-hosted, linux, x64, test]
+            runner: [self-hosted, linux, x64, test-isc]
     runs-on: ${{ matrix.runner }}
     environment: test
     
